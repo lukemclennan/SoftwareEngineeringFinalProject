@@ -8,6 +8,6 @@ namespace SoftwareEngineeringFinalProject.Models
     public class Flower
     {
         [PrimaryKey, AutoIncrement]
-
+        public int FlowerID { get; set; }
     }
 }

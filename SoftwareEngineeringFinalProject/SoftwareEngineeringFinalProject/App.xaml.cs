@@ -10,7 +10,7 @@ namespace SoftwareEngineeringFinalProject
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new PaymentPage();
         }
 
         protected override void OnStart()
