@@ -7,7 +7,7 @@ namespace SoftwareEngineeringFinalProject.Models
 {
     public class Payment
     {
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
         public int PaymentID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -19,5 +19,10 @@ namespace SoftwareEngineeringFinalProject.Models
         public string State { get; set; }
         public string Country { get; set; }
         public string ZipCode { get; set; }
+        public int UserID { get; set; }
+        public override string ToString()
+        {
+            return CreditCardNumber;
+        }
     }
 }

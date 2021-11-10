@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -135,8 +136,9 @@ namespace SoftwareEngineeringFinalProject
                     Country = country.Text,
                     ZipCode = zipCode.Text
                 };
-                //db.insert(payment);
+                await App.DB.SavePaymentAsync(payment);
                 await DisplayAlert("Saved", "Payment information saved", "OK");
+                await Navigation.PushAsync(new PaymentsCollectionPage());
             } 
             else
             {
