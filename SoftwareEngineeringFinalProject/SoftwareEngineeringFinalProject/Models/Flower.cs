@@ -9,5 +9,7 @@ namespace SoftwareEngineeringFinalProject.Models
     {
         [PrimaryKey, AutoIncrement]
         public int FlowerID { get; set; }
+        public string FlowerName { get; set; }
+        public double CostPerFlower { get; set; }
     }
 }
