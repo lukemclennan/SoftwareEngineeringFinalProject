@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SoftwareEngineeringFinalProject.AboutPageV2">
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Default" >
+            <StackLayout>
+            
+                <Label Text="About Us"
+                       Margin="10, 0, 0, 0"
+                       FontSize="Title"
+                       FontAttributes="Bold, Italic"
+                       HorizontalOptions="StartAndExpand"/>
+
+                <Line HeightRequest="5"
+                      WidthRequest="420"
+                      BackgroundColor="LightGray"
+                      HorizontalOptions="Center"/>
+           
+                <Label Text="Founded in 1980 our Grandmother Becky opened the doors to her customers and over 40 years later we are proud to continue serving our customer high quality beautiful flowers."
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="Black"
+                       FontAttributes="Italic"
+                       FontSize="Medium"
+                       Margin="10, 10, 0, 5" />
+           
+                <Label Text="Frequently Asked Questions"
+                       Margin="10, 0, 0, 0"
+                       FontAttributes="Bold"
+                       FontSize="Large"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="Black" />
+
+                <Line HeightRequest="5"
+                      WidthRequest="420"
+                      BackgroundColor="LightGray"
+                      HorizontalOptions="Center"/>
+
+                <Label Text="Question: Your Prices seem fair but do you offer any discounts?"
+                       FontAttributes="Bold"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="10, 10, 0, 0"
+                       TextColor="Black"/>
+            
+                <Label Text="Answer: Yes! We are proud to offer our sercive members, police officers, and first responders a 15% discount on all items."
+                       FontAttributes="Italic"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="30, 5, 0, 0"
+                       TextColor="Black"/>
+
+                  <Label Text="Question: I love your flowers but driving is a hassel, do you deliver?"
+                       FontAttributes="Bold"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="10, 10, 0, 0"
+                       TextColor="Black"/>
+            
+                <Label Text="Answer: Unfortunately, no. In order to keep our prices low we do not offer any delivery service."
+                       FontAttributes="Italic"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="30, 5, 0, 0"
+                       TextColor="Black"/>
+
+                 <Label Text="Question: Where do you source your flowers?"
+                       FontAttributes="Bold"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="10, 10, 0, 0"
+                       TextColor="Black"/>
+            
+                <Label Text="Answer: Since 1980 when Grandma Becky opened up the flower shop we have source our flower seeds from local famers and gardeners. From there we carfuly plant and nurture each seed in our green house giving it vital nutrients and the perfect weather to prosper."
+                       FontAttributes="Italic"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="30, 5, 0, 0"
+                       TextColor="Black"/>
+
+                <Label Text="Question: Im looking for flowers for a special occasion but don't know what looks good together, can you help me?"
+                       FontAttributes="Bold"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="10, 10, 0, 0"
+                       TextColor="Black"/>
+            
+                <Label Text="Answer: Yes! Check out our 'occasions' tab in the bottom of the home page. There we offer many different flower arrangments from Thanksgiving to birthdays and anniversersaries."
+                       FontAttributes="Italic"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="30, 5, 0, 0"
+                       TextColor="Black"/>
+
+                <Label Text="Question: How can I customize my order?"
+                       FontAttributes="Bold"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="10, 10, 0, 0"
+                       TextColor="Black"/>
+            
+                <Label Text="Answer: Simply click on the flower you want, then click 'add to arrangment' . You may do this for any number of flowes or other greenery you may disire. Then click the 'arangments' tab. This will take you to a page where you can customize how many of each flower you want. If you want it in a vase or wrapped and what you want you want your message to say. " 
+                       FontAttributes="Italic"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="30, 5, 0, 0"
+                       TextColor="Black"/>
+
+                <Label Text="Question: This app is Flippin awsome! Who made it?"
+                       FontAttributes="Bold"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="10, 10, 0, 0"
+                       TextColor="Black"/>
+            
+                <Label Text="Answer: Alot of hard work went into developing this app. It was made by Elijah Proctor, Luke Mclennan, Alexis Rodriguez, and Sammie Powwel."
+                       FontAttributes="Italic"
+                       FontSize="Medium"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="30, 5, 0, 0"
+                       TextColor="Black"/>
+
+                <Label Text="Contact Us"
+                      HorizontalOptions="StartAndExpand"
+                      Margin="10, 10, 0, 0"
+                      FontAttributes="Bold"
+                      FontSize="Large"
+                      TextColor="Black" />
+
+                <Line HeightRequest="5"
+                      WidthRequest="420"
+                      BackgroundColor="LightGray"
+                      HorizontalOptions="Center"/>
+
+                <Label Text="PHONE:         (580)378-2387                 
+                             ADDDRESS:  1200 Cherry Lane, Lawton OK 73507
+                             EMAIL:           GmawBecky@gmail.com"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="Black"
+                       Margin="10, 10, 0, 0"
+                       FontAttributes="Italic"
+                       FontSize="Medium"/>
+
+
+                <Label Text="Mission statement"
+                      HorizontalOptions="StartAndExpand"
+                      Margin="10, 10, 0, 0"
+                      FontAttributes="Bold"
+                      FontSize="Large"
+                      TextColor="Black"/>
+
+                <Line HeightRequest="5"
+                      WidthRequest="420"
+                      BackgroundColor="LightGray"
+                      HorizontalOptions="Center"/>
+
+                 <Label Text="To provide consumers with high quality beautiful flowers at an affordable price."
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="Black"
+                       FontAttributes="Italic"
+                       FontSize="Medium"
+                       Margin="10, 10, 0, 0" />
+                 </StackLayout>
+           </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
