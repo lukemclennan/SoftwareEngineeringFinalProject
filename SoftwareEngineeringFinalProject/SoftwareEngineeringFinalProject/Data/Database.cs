@@ -22,6 +22,7 @@ namespace SoftwareEngineeringFinalProject.Data
             database.CreateTableAsync<CartItem>().Wait();
         }
 
+        
         public Task<List<User>> GetUsersAsync()
         {
             //Get all notes.
@@ -33,6 +34,13 @@ namespace SoftwareEngineeringFinalProject.Data
             // Get a specific note.
             return database.Table<User>()
                             .Where(i => i.UserID == id)
+                            .FirstOrDefaultAsync();
+        }
+        public Task<User> GetUserAsync(string username, string password)
+        {
+            // Get a specific note.
+            return database.Table<User>()
+                            .Where(i => i.UserName == username && i.UserPassword == password)
                             .FirstOrDefaultAsync();
         }
 
@@ -88,6 +96,47 @@ namespace SoftwareEngineeringFinalProject.Data
         {
             // Delete a note.
             return database.DeleteAsync(p);
+        }
+
+        public Task<List<Flower>> GetFlowersAsync()
+        {
+            //Get all notes.
+            return database.Table<Flower>().ToListAsync();
+        }
+
+        public Task<Flower> GetFlowerAsync(int id)
+        {
+            // Get a specific note.
+            return database.Table<Flower>()
+                            .Where(i => i.FlowerID == id)
+                            .FirstOrDefaultAsync();
+        }
+        public Task<Flower> GetFlowerAsync(string name)
+        {
+            // Get a specific note.
+            return database.Table<Flower>()
+                            .Where(i => i.FlowerName == name)
+                            .FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveFlowerAsync(Flower flower)
+        {
+            if (flower.FlowerID != 0)
+            {
+                // Update an existing note.
+                return database.UpdateAsync(flower);
+            }
+            else
+            {
+                // Save a new note.
+                return database.InsertAsync(flower);
+            }
+        }
+
+        public Task<int> DeleteFlowerAsync(Flower flower)
+        {
+            // Delete a note.
+            return database.DeleteAsync(flower);
         }
     }
 }

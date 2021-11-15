@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SoftwareEngineeringFinalProject.ViewFlowersPage">
+
+    <StackLayout>
+        <Button Text="Add New Flower Type"
+                Pressed="Button_Pressed"/>
+
+        <!-- Display notes in a list -->
+        <CollectionView x:Name="collectionView"
+                        Margin="20"
+                        SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <!-- Define the appearance of each item in the list -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding FlowerName}"
+                               FontSize="Large" />
+                        <Label Text="{Binding CostPerFlower, StringFormat='${0:F2}'}"
+                               FontSize="Medium" />
+                        <Image Source="{Binding ImagePath}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
