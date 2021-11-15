@@ -42,7 +42,7 @@ namespace SoftwareEngineeringFinalProject
                 else
                 {
                     App.User = user;
-                    await DisplayAlert("Signed in", App.User.FirstName + " " + App.User.LastName, "Ok");
+                    await Navigation.PushAsync(new UserModeTabbedPage());
                 }
                 //await DisplayAlert("Test", "Username: " + username + " Password: " + password, "Ok");
             }
