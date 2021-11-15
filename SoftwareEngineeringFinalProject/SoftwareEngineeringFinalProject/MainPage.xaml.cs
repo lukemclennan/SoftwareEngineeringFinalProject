@@ -13,6 +13,8 @@ namespace SoftwareEngineeringFinalProject
         public MainPage()
         {
             InitializeComponent();
+            
+            MainPage = new NavigationPage(new LoginPage());
         }
     }
 }
