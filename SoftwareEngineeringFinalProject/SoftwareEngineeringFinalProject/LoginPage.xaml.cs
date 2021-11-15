@@ -38,7 +38,7 @@ namespace SoftwareEngineeringFinalProject
         }
         public void SignUpProcedure(object sender, EventArgs e)
         {
-            DisplayAlert("Test", "Test", "Ok");
+            Navigation.PushAsync(new SignupPageV2());
         }
     }
 }
