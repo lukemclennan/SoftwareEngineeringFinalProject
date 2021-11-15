@@ -11,5 +11,6 @@ namespace SoftwareEngineeringFinalProject.Models
         public int FlowerID { get; set; }
         public string FlowerName { get; set; }
         public double CostPerFlower { get; set; }
+        public string ImagePath { get; set; }
     }
 }
