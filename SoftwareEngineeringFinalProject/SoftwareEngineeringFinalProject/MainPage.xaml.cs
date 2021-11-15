@@ -14,7 +14,6 @@ namespace SoftwareEngineeringFinalProject
         {
             InitializeComponent();
             
-            MainPage = new NavigationPage(new LoginPage());
         }
     }
 }
