@@ -6,9 +6,5 @@
 
              x:Class="SoftwareEngineeringFinalProject.UserModeTabbedPage">
   <!--Pages can be added as references or inline-->
-  <ContentPage Title="Home" />
-  <ContentPage Title="Occasions" />
-  <ContentPage Title="Arrangements" />
-  <ContentPage Title="Admin Mode" />
-  <ContentPage Title="About" />
+
 </TabbedPage>

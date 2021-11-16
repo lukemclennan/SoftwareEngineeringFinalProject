@@ -48,7 +48,7 @@ namespace SoftwareEngineeringFinalProject
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage( new ViewFlowersPage());
+            MainPage = new NavigationPage( new LoginPage());
         }
 
         protected override void OnStart()

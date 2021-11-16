@@ -13,6 +13,7 @@ namespace SoftwareEngineeringFinalProject
         public MainPage()
         {
             InitializeComponent();
+            
         }
     }
 }
