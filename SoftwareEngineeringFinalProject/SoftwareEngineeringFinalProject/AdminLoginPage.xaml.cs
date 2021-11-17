@@ -26,7 +26,17 @@ namespace SoftwareEngineeringFinalProject
         {
             password = Entry_Password.Text;
             username = Entry_Username.Text;
-
+            Models.Admin defaultAdmin = new Models.Admin
+            {
+                AdminFirstName = "John",
+                AdminLastName = "Doe",
+                AdminUsername = "admin",
+                AdminPassword = "password"
+            };
+            if (await App.DB.GetAdminAsync(defaultAdmin.AdminUsername) == null)
+            {
+                await App.DB.SaveAdminAsyn(defaultAdmin);
+            }
             ValidateLogin();
             if (errorCount > 0) //one of the entries is empty
             {
@@ -36,15 +46,15 @@ namespace SoftwareEngineeringFinalProject
             else //both entries are not empty
             {
                 Admin admin = await App.DB.GetAdminAsync(username, password);
-                if (admin == null)
+                if (admin == null) 
                 {
                     await DisplayAlert("Error", "One or Both Entry Fields are invalid", "Ok");
                 }
                 else
                 {
-                    await Navigation.PushAsync(new UserModeTabbedPage());
+                    await DisplayAlert("Success", "Username: " + username + " Password: " + password, "Ok");
+                    //await Navigation.PushAsync(new UserModeTabbedPage());
                 }
-                //await DisplayAlert("Test", "Username: " + username + " Password: " + password, "Ok");
             }
         }
     }
