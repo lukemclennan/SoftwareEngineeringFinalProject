@@ -8,6 +8,6 @@
         <Entry  PlaceholderColor="#7EA172" x:Name="Entry_Username" Placeholder="Username"/>
         <Entry PlaceholderColor="#7EA172" IsPassword ="True" x:Name="Entry_Password" Placeholder="Password"/>
 
-        <Button TextColor = "White" BackgroundColor="#7EA172" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" x:Name="Btn_Signin" Clicked = "LoginPrecedure" Text="Login"/>
+        <Button TextColor = "White" BackgroundColor="#7EA172" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" x:Name="Btn_Signin" Clicked = "LoginProcedure" Text="Login"/>
     </StackLayout>
 </ContentPage>
