@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace SoftwareEngineeringFinalProject
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AdminModeTabbedPage : TabbedPage
+    public partial class AdminModeTabbedPage : Xamarin.Forms.TabbedPage
     {
         public AdminModeTabbedPage()
         {
