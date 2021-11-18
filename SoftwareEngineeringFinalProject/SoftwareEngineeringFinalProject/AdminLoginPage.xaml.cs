@@ -1,72 +1,61 @@
+using SoftwareEngineeringFinalProject.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace SoftwareEngineeringFinalProject
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AdminModeTabbedPage : Xamarin.Forms.TabbedPage
+    public partial class AdminLoginPage : ContentPage
     {
-        public AdminModeTabbedPage()
+        public int errorCount = 0;
+        public string username;
+        public string password;
+        public AdminLoginPage()
         {
             InitializeComponent();
-            this.Children.Add(new ContentPage
+        }
+        public void ValidateLogin()
+        {
+            if (Entry_Username.Text == null)
+                errorCount++;
+            if (Entry_Password.Text == null)
+                errorCount++;
+        }
+        public async void LoginProcedure(object sender, EventArgs e)
+        {
+            password = Entry_Password.Text;
+            username = Entry_Username.Text;
+            Models.Admin defaultAdmin = new Models.Admin
             {
-                Title = "Home",
-                Content = new Label
+                AdminFirstName = "John",
+                AdminLastName = "Doe",
+                AdminUsername = "admin",
+                AdminPassword = "password"
+            };
+            if (await App.DB.GetAdminAsync(defaultAdmin.AdminUsername) == null)
+            {
+                await App.DB.SaveAdminAsyn(defaultAdmin);
+            }
+            ValidateLogin();
+            if (errorCount > 0) //one of the entries is empty
+            {
+                await DisplayAlert("Error", "One or Both Entry Fields are empty", "Ok");
+                errorCount = 0;
+            }
+            else //both entries are not empty
+            {
+                Admin admin = await App.DB.GetAdminAsync(username, password);
+                if (admin == null) 
                 {
-                    Text = "Home page will go here"
+                    await DisplayAlert("Error", "One or Both Entry Fields are invalid", "Ok");
                 }
-            });
-            this.Children.Add(new ContentPage
-            {
-                Title = "Users",
-                Content = new Label
+                else
                 {
-                    Text = "Users page will go here"
+                    //go to admin mode tabbed page
+                    await Navigation.PushAsync(new AdminModeTabbedPage());
                 }
-            });
-            this.Children.Add(new DeleteUser
-            {
-                Title = "Delete User"
-            });
-            this.Children.Add(new ContentPage
-            {
-                Title = "List of Flowers",
-                Content = new Label
-                {
-                    Text = "List of flowers page will go here"
-                }
-            });
-            this.Children.Add(new ContentPage
-            {
-                Title = "Add Flower",
-                Content = new Label
-                {
-                    Text = "Add flower page will go here"
-                }
-            }) ;
-            this.Children.Add(new ContentPage
-            {
-                Title = "Delete Flower",
-                Content = new Label
-                {
-                    Text = "Delete flower page will go here"
-                }
-            });
-            this.Children.Add(new ContentPage
-            {
-                Title = "Orders",
-                Content = new Label
-                {
-                    Text = "Order page will go here"
-                }
-            });
+            }
         }
     }
 }
