@@ -52,8 +52,8 @@ namespace SoftwareEngineeringFinalProject
                 }
                 else
                 {
-                    await DisplayAlert("Success", "Username: " + username + " Password: " + password, "Ok");
-                    //await Navigation.PushAsync(new UserModeTabbedPage());
+                    //go to admin mode tabbed page
+                    await Navigation.PushAsync(new AdminModeTabbedPage());
                 }
             }
         }
