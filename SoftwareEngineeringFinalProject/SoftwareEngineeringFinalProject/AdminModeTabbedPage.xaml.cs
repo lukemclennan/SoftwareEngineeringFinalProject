@@ -35,22 +35,14 @@ namespace SoftwareEngineeringFinalProject
             {
                 Title = "Delete User"
             });
-            this.Children.Add(new ContentPage
+            this.Children.Add(new ViewFlowersPage
             {
-                Title = "List of Flowers",
-                Content = new Label
-                {
-                    Text = "List of flowers page will go here"
-                }
+                Title = "List of Flowers"
             });
-            this.Children.Add(new ContentPage
+            this.Children.Add(new AddFlowerPage
             {
-                Title = "Add Flower",
-                Content = new Label
-                {
-                    Text = "Add flower page will go here"
-                }
-            }) ;
+                Title = "Add Flower"
+            });
             this.Children.Add(new ContentPage
             {
                 Title = "Delete Flower",
