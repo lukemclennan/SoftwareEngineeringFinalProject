@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,13 +43,9 @@ namespace SoftwareEngineeringFinalProject
                     Text = "Arrangments page will go here"
                 }
             });
-            Children.Add(new ContentPage
+            this.Children.Add(new ContentPage
             {
-                Title = "Admin Mode",
-                Content = new Label
-                {
-                    Text = "Admin login page will go here"
-                }
+                Title = "Admin Mode"
             });
             Children.Add(new AboutPageV2
             {
