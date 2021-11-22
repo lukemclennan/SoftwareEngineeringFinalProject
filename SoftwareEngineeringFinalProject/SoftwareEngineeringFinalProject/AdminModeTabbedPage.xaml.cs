@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +6,13 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.Forms.PlatformConfiguration;
-using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace SoftwareEngineeringFinalProject
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UserModeTabbedPage : Xamarin.Forms.TabbedPage
+    public partial class AdminModeTabbedPage : TabbedPage
     {
-        public UserModeTabbedPage()
+        public AdminModeTabbedPage()
         {
             InitializeComponent();
             this.Children.Add(new ContentPage
@@ -28,30 +25,36 @@ namespace SoftwareEngineeringFinalProject
             });
             this.Children.Add(new ContentPage
             {
-                Title = "Occasions",
+                Title = "Users",
                 Content = new Label
                 {
-                    Text = "Occasions page will go here"
+                    Text = "Users page will go here"
+                }
+            });
+            this.Children.Add(new DeleteUser
+            {
+                Title = "Delete User"
+            });
+            this.Children.Add(new ViewFlowersPage
+            {
+                Title = "List of Flowers"
+            });
+            this.Children.Add(new ContentPage
+            {
+                Title = "Delete Flower",
+                Content = new Label
+                {
+                    Text = "Delete flower page will go here"
                 }
             });
             this.Children.Add(new ContentPage
             {
-                Title = "Arrangments",
+                Title = "Orders",
                 Content = new Label
                 {
-                    Text = "Arrangments page will go here"
+                    Text = "Order page will go here"
                 }
             });
-            this.Children.Add(new AdminLoginPage
-            {
-                Title = "Admin Mode"
-            });
-            this.Children.Add(new AboutPageV2
-            {
-                Title = "About"
-            });
-
-            On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
         }
     }
 }

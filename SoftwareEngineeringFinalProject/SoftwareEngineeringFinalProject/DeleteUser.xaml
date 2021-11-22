@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SoftwareEngineeringFinalProject.DeleteUser">
+    <ContentPage.Content>
+        <StackLayout >
+            <Label Text="Delete User"
+                    FontAttributes="Italic, Bold"
+                    FontSize="Title"
+                    HorizontalOptions="Center" >
+            </Label>
+            <Entry Placeholder="Enter User First Name" PlaceholderColor="#7EA172" x:Name="Entry_fname" />
+            <Entry Placeholder="Enter User Last Name" PlaceholderColor="#7EA172" x:Name="Entry_lname" />
+    
+            <Button TextColor = "White" BackgroundColor="#7EA172" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="findAndDelete" Text="Find and Delete"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

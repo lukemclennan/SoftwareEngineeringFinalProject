@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 using SoftwareEngineeringFinalProject.Models;
@@ -12,6 +12,7 @@ namespace SoftwareEngineeringFinalProject.Data
         public Database(string dbPath)
         {
             database = new SQLiteAsyncConnection(dbPath);
+            database.CreateTableAsync<Admin>().Wait();
             database.CreateTableAsync<Payment>().Wait();
             database.CreateTableAsync<User>().Wait();
             database.CreateTableAsync<Order>().Wait();
@@ -21,20 +22,45 @@ namespace SoftwareEngineeringFinalProject.Data
             database.CreateTableAsync<Cart>().Wait();
             database.CreateTableAsync<CartItem>().Wait();
         }
-
-        
-        public Task<List<User>> GetUsersAsync()
+        public Task<int> SaveAdminAsyn(Admin admin)
+        {
+            if(admin.AdminID != 0)
+            {
+                return database.UpdateAsync(admin);
+            }
+            return database.InsertAsync(admin);
+        }
+        public Task<Admin> GetAdminAsync(string username)
+        {
+            // Get a specific note.
+            return database.Table<Admin>().Where(i => i.AdminUsername == username).FirstOrDefaultAsync();
+        }
+        public Task<Admin> GetAdminAsync(string username, string password)
+        {
+            // Get a specific note.
+            return database.Table<Admin>().Where(i => i.AdminUsername == username && i.AdminPassword == password).FirstOrDefaultAsync();
+        }
+        public Task<Admin> GetAdminAsync(int id)
+        {
+            // Get a specific note.
+            return database.Table<Admin>().Where(i => i.AdminID == id).FirstOrDefaultAsync();
+        }
+        public Task< List<User> > GetUsersAsync()
         {
             //Get all notes.
             return database.Table<User>().ToListAsync();
         }
-
         public Task<User> GetUserAsync(int id)
         {
             // Get a specific note.
             return database.Table<User>()
                             .Where(i => i.UserID == id)
                             .FirstOrDefaultAsync();
+        }
+        public Task<User> GetUserAsync(string username)
+        {
+            // Get a specific note.
+            return database.Table<User>().Where(i => i.UserName == username).FirstOrDefaultAsync();
         }
         public Task<User> GetUserAsync(string username, string password)
         {
