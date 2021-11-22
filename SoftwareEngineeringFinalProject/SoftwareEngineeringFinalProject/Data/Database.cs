@@ -69,6 +69,11 @@ namespace SoftwareEngineeringFinalProject.Data
                             .Where(i => i.UserName == username && i.UserPassword == password)
                             .FirstOrDefaultAsync();
         }
+        
+        public Task<User> GetUserFnameLnameAsync(string fname, string lname)
+        {
+            return database.Table<User>().Where(i => i.FirstName == fname && i.LastName == lname).FirstOrDefaultAsync();
+        }
 
         public Task<int> SaveUserAsync(User user)
         {
