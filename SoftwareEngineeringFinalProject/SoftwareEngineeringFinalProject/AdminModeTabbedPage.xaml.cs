@@ -39,13 +39,9 @@ namespace SoftwareEngineeringFinalProject
             {
                 Title = "List of Flowers"
             });
-            this.Children.Add(new ContentPage
+            this.Children.Add(new AdminDeleteFlower
             {
-                Title = "Delete Flower",
-                Content = new Label
-                {
-                    Text = "Delete flower page will go here"
-                }
+                Title = "Delete Flower"
             });
             this.Children.Add(new ContentPage
             {
