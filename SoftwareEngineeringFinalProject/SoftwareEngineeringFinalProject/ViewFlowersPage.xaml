@@ -7,7 +7,7 @@
         <Button Text="Add New Flower Type"
                 Pressed="Button_Pressed"/>
 
-        <!-- Display notes in a list -->
+        <!-- Display flowers in a list -->
         <CollectionView x:Name="collectionView"
                         Margin="20"
                         SelectionMode="Single">

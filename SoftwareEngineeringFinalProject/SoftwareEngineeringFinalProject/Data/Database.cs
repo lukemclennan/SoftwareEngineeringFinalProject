@@ -138,5 +138,41 @@ namespace SoftwareEngineeringFinalProject.Data
             // Delete a note.
             return database.DeleteAsync(flower);
         }
+
+        public Task<FlowerArrangement> GetFlowerArrangementAsync(int id)
+        {
+            // Get a specific note.
+            return database.Table<FlowerArrangement>()
+                            .Where(i => i.FlowerID == id)
+                            .FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveFlowerArrangementAsync(FlowerArrangement flowerArrangement)
+        {
+            if (flowerArrangement.FlowerArrangementID != 0)
+            {
+                // Update an existing note.
+                return database.UpdateAsync(flowerArrangement);
+            }
+            else
+            {
+                // Save a new note.
+                return database.InsertAsync(flowerArrangement);
+            }
+        }
+
+        public Task<int> SaveCartItemAsync(CartItem cartItem)
+        {
+            if (cartItem.CartItemID != 0)
+            {
+                // Update an existing note.
+                return database.UpdateAsync(cartItem);
+            }
+            else
+            {
+                // Save a new note.
+                return database.InsertAsync(cartItem);
+            }
+        }
     }
 }

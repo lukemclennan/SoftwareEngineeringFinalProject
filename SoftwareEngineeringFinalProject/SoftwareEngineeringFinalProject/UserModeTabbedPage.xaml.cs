@@ -17,15 +17,16 @@ namespace SoftwareEngineeringFinalProject
         public UserModeTabbedPage()
         {
             InitializeComponent();
-            this.Children.Add(new ContentPage
+            /*this.Children.Add(new ContentPage
             {
                 Title = "Home",
                 Content = new Label
                 {
                     Text = "Home page will go here"
                 }
-            });
-            this.Children.Add(new ContentPage
+            });*/
+            Children.Add(new HomePage());
+            Children.Add(new ContentPage
             {
                 Title = "Occasions",
                 Content = new Label
@@ -33,7 +34,7 @@ namespace SoftwareEngineeringFinalProject
                     Text = "Occasions page will go here"
                 }
             });
-            this.Children.Add(new ContentPage
+            Children.Add(new ContentPage
             {
                 Title = "Arrangments",
                 Content = new Label
@@ -41,7 +42,7 @@ namespace SoftwareEngineeringFinalProject
                     Text = "Arrangments page will go here"
                 }
             });
-            this.Children.Add(new ContentPage
+            Children.Add(new ContentPage
             {
                 Title = "Admin Mode",
                 Content = new Label
@@ -49,12 +50,15 @@ namespace SoftwareEngineeringFinalProject
                     Text = "Admin login page will go here"
                 }
             });
-            this.Children.Add(new AboutPageV2
+            Children.Add(new AboutPageV2
             {
                 Title = "About"
             });
 
+            Title = Children[TabIndex].Title;
+
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
         }
+
     }
 }

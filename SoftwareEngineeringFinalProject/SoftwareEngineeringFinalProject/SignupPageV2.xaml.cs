@@ -9,6 +9,7 @@ namespace SoftwareEngineeringFinalProject
     {
         public SignupPageV2()
         {
+            Title = "Sign Up";
             InitializeComponent();
         }
         public bool emptyEntry(string firstname, string lastname, string username, string password, string password2)

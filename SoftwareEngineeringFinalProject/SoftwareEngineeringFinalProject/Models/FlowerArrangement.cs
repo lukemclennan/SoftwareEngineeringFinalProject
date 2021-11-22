@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SoftwareEngineeringFinalProject.Models
 {
-    class FlowerArrangement
+    public class FlowerArrangement
     {
         [PrimaryKey, AutoIncrement]
         public int FlowerArrangementID { get; set; }

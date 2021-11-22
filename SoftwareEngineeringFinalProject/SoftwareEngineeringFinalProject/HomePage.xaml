@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SoftwareEngineeringFinalProject.HomePage">
+    <StackLayout>
+        <!-- Display flowers in a list -->
+        <CollectionView x:Name="collectionView"
+                        Margin="20"
+                        SelectionMode="Single"
+                        SelectionChanged="SelectionChanged">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2" 
+                                 VerticalItemSpacing="20"/>
+            </CollectionView.ItemsLayout>
+            <!--<CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   
+                                   ItemSpacing="10" />
+            </CollectionView.ItemsLayout>-->
+            <!-- Define the appearance of each item in the list -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding ImagePath}" 
+                               Grid.RowSpan="2"
+                               Grid.Column="0"/>
+                        <Label Grid.Row="0" 
+                               Grid.Column="1"
+                               Text="{Binding FlowerName}"
+                               FontSize="Medium" />
+                        <Label Text="{Binding CostPerFlower, StringFormat='${0:F2}'}"
+                               FontSize="Medium" 
+                               Grid.Row="1"
+                               Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
+    

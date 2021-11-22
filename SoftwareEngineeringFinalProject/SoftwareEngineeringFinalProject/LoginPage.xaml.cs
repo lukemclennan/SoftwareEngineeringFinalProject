@@ -13,6 +13,7 @@ namespace SoftwareEngineeringFinalProject
         public string password;
         public LoginPage()
         {
+            Title = "Login";
             InitializeComponent();
         }
         public void ValidateLogin()
