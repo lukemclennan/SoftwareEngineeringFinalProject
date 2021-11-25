@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SoftwareEngineeringFinalProject.ViewFlowersPage">
 
-    <StackLayout>
-        <Button Text="Add New Flower Type"
-                Pressed="Button_Pressed"/>
+    <StackLayout BackgroundColor="#7EA172">
+        <!-- <Button Text="Add New Flower Type"
+                Pressed="Button_Pressed"/> -->
 
         <!-- Display notes in a list -->
         <CollectionView x:Name="collectionView"
@@ -20,10 +20,18 @@
                 <DataTemplate>
                     <StackLayout>
                         <Label Text="{Binding FlowerName}"
-                               FontSize="Large" />
+                               FontSize="Large"
+                               TextColor="#502419"/>
                         <Label Text="{Binding CostPerFlower, StringFormat='${0:F2}'}"
-                               FontSize="Medium" />
-                        <Image Source="{Binding ImagePath}" />
+                               FontSize="Medium"
+                               TextColor="#502419"/>
+                        <Image Source="{Binding ImagePath}"
+                               WidthRequest="150"
+                               HeightRequest="150"/>
+                        <Line HeightRequest="5"
+                              WidthRequest="420"
+                              BackgroundColor="#C7CB85"
+                              HorizontalOptions="Center"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

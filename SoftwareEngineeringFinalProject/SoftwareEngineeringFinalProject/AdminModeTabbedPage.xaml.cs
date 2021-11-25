@@ -20,28 +20,20 @@ namespace SoftwareEngineeringFinalProject
                 Title = "Home",
                 Content = new Label
                 {
-                    Text = "Home page will go here"
+                    Text = "List of Flowers will go here"
                 }
             });
-            this.Children.Add(new ContentPage
+            this.Children.Add(new AdminDisplayUsers
             {
-                Title = "Users",
-                Content = new Label
-                {
-                    Text = "Users page will go here"
-                }
+                Title = "Users"
             });
             this.Children.Add(new DeleteUser
             {
                 Title = "Delete User"
             });
-            this.Children.Add(new ViewFlowersPage
-            {
-                Title = "List of Flowers"
-            });
             this.Children.Add(new AdminDeleteFlower
             {
-                Title = "Delete Flower"
+               Title = "Flower Options"
             });
             this.Children.Add(new ContentPage
             {
