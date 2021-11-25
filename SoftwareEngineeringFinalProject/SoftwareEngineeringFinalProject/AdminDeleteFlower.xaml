@@ -22,7 +22,7 @@
                 <Entry Placeholder="Enter the Price of the Flower" PlaceholderColor="#502419" x:Name="Entry_cost" BackgroundColor="#C7CB85" />
                 <Entry Placeholder="Image URL: https://www.domain.com/image.jpg" PlaceholderColor="#502419" x:Name="Entry_URL" BackgroundColor="#C7CB85" />
                 <Button Text="Add Flower" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" CornerRadius="45" HorizontalOptions="Center" Clicked="addFlower"/>
-                <!--EDIT FLOWER PRICE-->
+                <!--Update FLOWER PRICE-->
                 <Label Text="Edit Flower Price"
                       FontAttributes="Bold"
                       FontSize="Title"

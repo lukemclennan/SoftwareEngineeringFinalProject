@@ -62,7 +62,7 @@ namespace SoftwareEngineeringFinalProject
 
         async void updateFlowerPrice(Object sender, EventArgs e)
         {
-            fname = Entry_fname3.Text;
+            fname = Entry_fname2.Text;
             cost = Entry_cost2.Text;
 
             //invalid entry 
@@ -89,7 +89,7 @@ namespace SoftwareEngineeringFinalProject
 
         async void findAndDeleteFlower(Object sender, EventArgs e)
         {
-            fname = Entry_fname2.Text;
+            fname = Entry_fname3.Text;
  
             //invalid entry 
             if (fname == null)
@@ -111,9 +111,7 @@ namespace SoftwareEngineeringFinalProject
             }
         }
 
-   
-  
-
+ 
         async void addOccasion(Object sender, EventArgs e)
         {
             fname = Entry_Occ.Text;
