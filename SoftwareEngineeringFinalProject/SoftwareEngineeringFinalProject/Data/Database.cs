@@ -19,9 +19,11 @@ namespace SoftwareEngineeringFinalProject.Data
             database.CreateTableAsync<OrderItem>().Wait();
             database.CreateTableAsync<Flower>().Wait();
             database.CreateTableAsync<FlowerArrangement>().Wait();
+            database.CreateTableAsync<Occasions>().Wait();
             database.CreateTableAsync<Cart>().Wait();
             database.CreateTableAsync<CartItem>().Wait();
         }
+        /* ** ** ** ** Admin ** ** ** **  */
         public Task<int> SaveAdminAsyn(Admin admin)
         {
             if(admin.AdminID != 0)
@@ -45,6 +47,8 @@ namespace SoftwareEngineeringFinalProject.Data
             // Get a specific note.
             return database.Table<Admin>().Where(i => i.AdminID == id).FirstOrDefaultAsync();
         }
+
+        /* ** ** ** ** User ** ** ** **  */
         public Task< List<User> > GetUsersAsync()
         {
             //Get all notes.
@@ -69,7 +73,7 @@ namespace SoftwareEngineeringFinalProject.Data
                             .Where(i => i.UserName == username && i.UserPassword == password)
                             .FirstOrDefaultAsync();
         }
-        
+
         public Task<User> GetUserFnameLnameAsync(string fname, string lname)
         {
             return database.Table<User>().Where(i => i.FirstName == fname && i.LastName == lname).FirstOrDefaultAsync();
@@ -95,6 +99,35 @@ namespace SoftwareEngineeringFinalProject.Data
             return database.DeleteAsync(user);
         }
 
+
+        /* ** ** ** ** Occasions Arrangment ** ** ** **  */
+        public Task<List<Occasions>> GetOccasionsAsync()
+        {
+            return database.Table<Occasions>().ToListAsync();
+        }
+        public Task<Occasions> GetOccasionAsync(string OccName)
+        {
+            return database.Table<Occasions>()
+                           .Where(i => i.OccasionName == OccName)
+                           .FirstOrDefaultAsync();
+        }
+        public Task<int> SaveOccasionAsync(Occasions o)
+        {
+            if(o.OccasionID != 0)
+            {
+                return database.UpdateAsync(o);
+            }
+            else
+            {
+                return database.InsertAsync(o);
+            }
+        }
+        public Task<int> DeleteOccasionAsyn(Occasions o)
+        {
+            return database.DeleteAsync(o);
+        }
+
+        /* ** ** ** ** Payment ** ** ** **  */
         public Task<List<Payment>> GetPaymentsAsync()
         {
             //Get all notes.
@@ -129,6 +162,7 @@ namespace SoftwareEngineeringFinalProject.Data
             return database.DeleteAsync(p);
         }
 
+        /* ** ** ** ** Flowers ** ** ** **  */
         public Task<List<Flower>> GetFlowersAsync()
         {
             //Get all notes.
