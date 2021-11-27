@@ -1,11 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SoftwareEngineeringFinalProject.SignupPageV2">
-
-    <StackLayout Margin="0, 120, 0, 0">
-        <Label/>
+    <StackLayout Margin="0, 60, 0, 0">
+        <Label Text ="Registration" TextColor="#EBBE9B" TextTransform="Uppercase" HorizontalOptions="Center" FontSize= "35" Margin ="0,0,0,30"/>
         <Entry PlaceholderColor="#EBBE9B" x:Name="Entry_Firstname" Placeholder="First Name"/>
         <Entry PlaceholderColor="#EBBE9B" x:Name="Entry_Lastname" Placeholder="Last Name"/>
         <Entry PlaceholderColor="#EBBE9B" x:Name="Entry_Username" Placeholder="Username"/>
