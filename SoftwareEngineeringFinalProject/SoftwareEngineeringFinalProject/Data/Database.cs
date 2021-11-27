@@ -22,6 +22,19 @@ namespace SoftwareEngineeringFinalProject.Data
             database.CreateTableAsync<Cart>().Wait();
             database.CreateTableAsync<CartItem>().Wait();
         }
+
+        public Task<List<CartItem>> GetCartItemsAsync(int cartID)
+        {
+            return database.Table<CartItem>().Where(i => i.CartID == cartID).ToListAsync();
+        }
+        //public async Task<List<CartItem>> GetCartArrangementsAsync(int cartID)
+        //{
+        //    List<CartItem> cartItems = await database.Table<CartItem>().Where(i => i.CartID == cartID).ToListAsync();
+        //    foreach (CartItem cartItem in cartItems) { 
+                
+        //    }
+        //}
+
         public Task<int> SaveAdminAsyn(Admin admin)
         {
             if(admin.AdminID != 0)

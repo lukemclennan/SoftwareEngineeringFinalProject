@@ -35,18 +35,16 @@ namespace SoftwareEngineeringFinalProject
                     Text = "Occasions page will go here"
                 }
             });
-            Children.Add(new ContentPage
-            {
-                Title = "Arrangments",
-                Content = new Label
-                {
-                    Text = "Arrangments page will go here"
-                }
-            });
-            this.Children.Add(new ContentPage
-            {
-                Title = "Admin Mode"
-            });
+            //Children.Add(new ContentPage
+            //{
+            //    Title = "Arrangments",
+            //    Content = new Label
+            //    {
+            //        Text = "Arrangments page will go here"
+            //    }
+            //});
+            Children.Add(new CartPage());
+            this.Children.Add(new AdminLoginPage());
             Children.Add(new AboutPageV2
             {
                 Title = "About"

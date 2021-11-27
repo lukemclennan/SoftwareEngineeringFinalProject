@@ -2,7 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="SoftwareEngineeringFinalProject.AdminLoginPage">
+    x:Class="SoftwareEngineeringFinalProject.AdminLoginPage"
+    Title="Admin Mode">
 
     <StackLayout Margin="0, 120, 0, 0">
         <Entry  PlaceholderColor="#7EA172" x:Name="Entry_Username" Placeholder="Username"/>

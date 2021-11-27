@@ -8,7 +8,7 @@ namespace SoftwareEngineeringFinalProject
     public partial class AdminDeleteFlower : ContentPage
     {
         private string fname;
-        private int errorCnt;
+        //private int errorCnt;
 
         public AdminDeleteFlower()
         {
