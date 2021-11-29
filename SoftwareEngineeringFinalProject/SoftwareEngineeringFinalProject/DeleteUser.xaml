@@ -10,8 +10,8 @@
                     FontSize="Title"
                     HorizontalOptions="Center" >
             </Label>
-            <Entry Placeholder="Enter User First Name" PlaceholderColor="#7EA172" x:Name="Entry_fname" />
-            <Entry Placeholder="Enter User Last Name" PlaceholderColor="#7EA172" x:Name="Entry_lname" />
+            <Entry Placeholder="Enter User username" PlaceholderColor="#7EA172" x:Name="Entry_fname" />
+            <Entry Placeholder="Enter User password" PlaceholderColor="#7EA172" x:Name="Entry_lname" />
     
             <Button TextColor = "White" BackgroundColor="#7EA172" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="findAndDelete" Text="Find and Delete"/>
         </StackLayout>
