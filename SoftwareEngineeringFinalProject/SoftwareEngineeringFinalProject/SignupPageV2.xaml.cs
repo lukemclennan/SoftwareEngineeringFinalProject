@@ -51,24 +51,6 @@ namespace SoftwareEngineeringFinalProject
             {
                 await DisplayAlert("Error", "Username is already taken", "OK");
             }
-            /*
-            Models.Payment payment = new Models.Payment
-                {
-                    FirstName = first.Text,
-                    LastName = last.Text,
-                    CreditCardNumber = ccn.Text,
-                    ExpDate = expDate.Date,
-                    Phone = phone.Text,
-                    Address = address.Text,
-                    City = city.Text,
-                    State = state.Text,
-                    Country = country.Text,
-                    ZipCode = zipCode.Text
-                };
-                await App.DB.SavePaymentAsync(payment);
-                await DisplayAlert("Saved", "Payment information saved", "OK");
-                await Navigation.PushAsync(new PaymentsCollectionPage());
-            */
             else
             {
                 Models.Cart cart = new Models.Cart
