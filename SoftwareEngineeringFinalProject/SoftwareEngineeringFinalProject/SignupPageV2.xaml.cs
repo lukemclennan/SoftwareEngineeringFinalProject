@@ -47,6 +47,10 @@ namespace SoftwareEngineeringFinalProject
             {
                 await DisplayAlert("Error", "Last Name is not valid", "OK");
             }
+            else if (await App.DB.GetUserAsync(Entry_Username.Text) != null)
+            {
+                await DisplayAlert("Error", "Username is already taken", "OK");
+            }
             /*
             Models.Payment payment = new Models.Payment
                 {
