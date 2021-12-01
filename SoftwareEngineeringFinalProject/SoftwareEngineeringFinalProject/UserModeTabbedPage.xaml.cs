@@ -26,13 +26,9 @@ namespace SoftwareEngineeringFinalProject
                     Text = "Home page will go here"
                 }
             });
-            this.Children.Add(new ContentPage
+            this.Children.Add(new OccasionsPage
             {
-                Title = "Occasions",
-                Content = new Label
-                {
-                    Text = "Occasions page will go here"
-                }
+                Title = "Occasions"
             });
             this.Children.Add(new ContentPage
             {
