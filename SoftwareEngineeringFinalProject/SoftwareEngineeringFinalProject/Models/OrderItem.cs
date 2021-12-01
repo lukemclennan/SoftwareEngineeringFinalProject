@@ -11,11 +11,5 @@ namespace SoftwareEngineeringFinalProject.Models
         public int OrderItemID { get; set; }
         public int OrderID { get; set; }
         public int FlowerArrangementID { get; set; }
-
-        public void AddToOrder(Order order)
-        {
-
-        }
-
     }
 }

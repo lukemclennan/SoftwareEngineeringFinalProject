@@ -33,14 +33,16 @@ namespace SoftwareEngineeringFinalProject
             bool addToCart = await DisplayAlert("Add to Cart?", "Would you like to add " + flower.FlowerName + " to your cart?", "Yes", "No");
             if (addToCart)
             {
-                FlowerArrangement flowerArrangement = new FlowerArrangement { 
+                FlowerArrangement flowerArrangement = new FlowerArrangement {
                     FlowerID = flower.FlowerID,
+                    FlowerArrangementName = flower.FlowerName + " Arrangement"
                 };
+                await App.DB.SaveFlowerArrangementAsync(flowerArrangement);
                 CartItem cartItem = new CartItem { 
                     CartID = App.User.CartID,
                     FlowerArrangementID = flowerArrangement.FlowerArrangementID
                 };
-                await App.DB.SaveFlowerArrangementAsync(flowerArrangement);
+                //await DisplayAlert("FlowerArrangmentID", flowerArrangement.FlowerArrangementID.ToString(), "Ok");
                 await App.DB.SaveCartItemAsync(cartItem);
                 await DisplayAlert("Success", "Item added to cart.", "Ok");
             }

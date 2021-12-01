@@ -4,19 +4,19 @@
              x:Class="SoftwareEngineeringFinalProject.CartPage"
              Title="Cart">
     <StackLayout>
-        <!-- Display flowers in a list -->
+        <!-- Display cart items in a list -->
         <CollectionView x:Name="collectionView"
                         Margin="20"
-                        SelectionMode="Single">
+                        SelectionMode="Single"
+                        SelectionChanged="SelectionChanged">
             <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical"
-                                   
                                        ItemSpacing="10" />
                 </CollectionView.ItemsLayout>
             <!-- Define the appearance of each item in the list -->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <!--<Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -36,9 +36,18 @@
                                    FontSize="Medium" 
                                    Grid.Row="1"
                                    Grid.Column="1"/>
-                    </Grid>
+                    </Grid>-->
+                    <StackLayout>
+                        <Label Text="{Binding FlowerArrangementName}"
+                               FontSize="Large" />
+                        <Label Text="{Binding FlowerArrangementID}" 
+                               FontSize="Medium" />
+                        <Label Text="{Binding FlowerID}" 
+                               FontSize="Medium" />
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Button Text="Checkout" Clicked="CheckoutButtonClicked"/>
     </StackLayout>
 </ContentPage>

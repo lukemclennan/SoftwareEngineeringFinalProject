@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 using SoftwareEngineeringFinalProject.Models;
+using System;
 
 namespace SoftwareEngineeringFinalProject.Data
 {
@@ -24,17 +25,41 @@ namespace SoftwareEngineeringFinalProject.Data
             database.CreateTableAsync<CartItem>().Wait();
         }
 
+       
+
+        public Task<int> DeleteCartItemAsync(CartItem cartItem)
+        {
+            return database.DeleteAsync(cartItem);
+        }
+
+        public Task<CartItem> GetCartItemAsync(int cartItemID)
+        {
+            return database.Table<CartItem>()
+                           .Where(i => i.CartItemID == cartItemID)
+                           .FirstOrDefaultAsync();
+        }
+
         public Task<List<CartItem>> GetCartItemsAsync(int cartID)
         {
             return database.Table<CartItem>().Where(i => i.CartID == cartID).ToListAsync();
         }
-        //public async Task<List<CartItem>> GetCartArrangementsAsync(int cartID)
-        //{
-        //    List<CartItem> cartItems = await database.Table<CartItem>().Where(i => i.CartID == cartID).ToListAsync();
-        //    foreach (CartItem cartItem in cartItems) { 
-                
-        //    }
-        //}
+
+        public async Task<List<FlowerArrangement>> GetCartArrangementsAsync(int cartID)
+        {
+            List<CartItem> cartItems = await database.Table<CartItem>().Where(i => i.CartID == cartID).ToListAsync();
+            List<FlowerArrangement> flowerArrangements = new List<FlowerArrangement>();
+            foreach (CartItem cartItem in cartItems)
+            {
+                FlowerArrangement flowerArrangement = await GetFlowerArrangementAsync(cartItem.CartID);
+                flowerArrangements.Add(flowerArrangement);
+            }
+            return flowerArrangements;
+        }
+
+        public Task<List<CartQueryResult>> GetCartArrangementsAsync2(int cartID)
+        {
+            return database.QueryAsync<CartQueryResult>($"SELECT c.CartItemID, c.FlowerArrangementID, f.FlowerArrangementName, f.IsOccasion, f.FlowerID FROM FlowerArrangement f INNER JOIN CartItem c ON f.FlowerArrangementID = c.FlowerArrangementID WHERE c.CartID = {cartID}");
+        }
 
         public Task<int> SaveAdminAsyn(Admin admin)
         {
@@ -89,6 +114,28 @@ namespace SoftwareEngineeringFinalProject.Data
         public Task<User> GetUserFnameLnameAsync(string fname, string lname)
         {
             return database.Table<User>().Where(i => i.FirstName == fname && i.LastName == lname).FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveOrderAsync(Order order)
+        {
+            return database.InsertAsync(order);
+        }
+
+        public Task<List<Order>> GetOrdersAsync()
+        {
+            return database.Table<Order>().ToListAsync();
+        }
+
+        public Task<int> SaveOrderItemAsync(OrderItem orderItem)
+        {
+            if (orderItem.OrderItemID != 0)
+            {
+                return database.UpdateAsync(orderItem);
+            }
+            else
+            {
+                return database.InsertAsync(orderItem);
+            }
         }
 
         public Task<int> SaveUserAsync(User user)
@@ -214,6 +261,11 @@ namespace SoftwareEngineeringFinalProject.Data
         {
             // Delete a note.
             return database.DeleteAsync(flower);
+        }
+
+        public Task<List<FlowerArrangement>> GetFlowerArrangementsAsync()
+        {
+            return database.Table<FlowerArrangement>().ToListAsync();
         }
 
         public Task<FlowerArrangement> GetFlowerArrangementAsync(int id)

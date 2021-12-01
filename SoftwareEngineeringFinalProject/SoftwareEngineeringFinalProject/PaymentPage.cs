@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using SoftwareEngineeringFinalProject.Models;
 
 namespace SoftwareEngineeringFinalProject
 {
@@ -84,7 +85,7 @@ namespace SoftwareEngineeringFinalProject
             };
 
             button = new Button();
-            button.Text = "Save";
+            button.Text = "Process Payment";
             button.Clicked += Button_Clicked;
 
             Content = new ScrollView
@@ -123,7 +124,7 @@ namespace SoftwareEngineeringFinalProject
         {
             if (first.Text != "" && last.Text != "" && ccn.Text != "" && expDate.Date > DateTime.Now && city.Text != "" && state.Text != "" && country.Text != "" && zipCode.Text != "")
             {
-                Models.Payment payment = new Models.Payment
+                Payment payment = new Payment
                 {
                     FirstName = first.Text,
                     LastName = last.Text,
@@ -134,12 +135,28 @@ namespace SoftwareEngineeringFinalProject
                     City = city.Text,
                     State = state.Text,
                     Country = country.Text,
-                    ZipCode = zipCode.Text
+                    ZipCode = zipCode.Text,
+                    UserID = App.User.UserID
                 };
                 await App.DB.SavePaymentAsync(payment);
-                await DisplayAlert("Saved", "Payment information saved", "OK");
-                await Navigation.PushAsync(new PaymentsCollectionPage());
-            } 
+                Order order = new Order {
+                    UserID = App.User.UserID,
+                    Date = DateTime.Now
+                };
+                await App.DB.SaveOrderAsync(order);
+                List<CartItem> cartItems = await App.DB.GetCartItemsAsync(App.User.CartID);
+                foreach (CartItem cartItem in cartItems) {
+                    OrderItem orderItem = new OrderItem {
+                        OrderID = order.OrderID,
+                        FlowerArrangementID = cartItem.FlowerArrangementID
+                    };
+                    await App.DB.SaveOrderItemAsync(orderItem);
+                    await App.DB.DeleteCartItemAsync(cartItem);
+                }
+                await DisplayAlert("Success", "Payment completed", "OK");
+                //await Navigation.PushAsync(new PaymentsCollectionPage());
+                await Navigation.PopAsync();
+            }
             else
             {
                 await DisplayAlert("Error", "Your payment information is incomplete", "OK");
