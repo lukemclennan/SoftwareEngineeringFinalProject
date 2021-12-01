@@ -26,7 +26,7 @@ namespace SoftwareEngineeringFinalProject.Data
         /* ** ** ** ** Admin ** ** ** **  */
         public Task<int> SaveAdminAsyn(Admin admin)
         {
-            if(admin.AdminID != 0)
+            if (admin.AdminID != 0)
             {
                 return database.UpdateAsync(admin);
             }
@@ -34,41 +34,34 @@ namespace SoftwareEngineeringFinalProject.Data
         }
         public Task<Admin> GetAdminAsync(string username)
         {
-            // Get a specific note.
             return database.Table<Admin>().Where(i => i.AdminUsername == username).FirstOrDefaultAsync();
         }
         public Task<Admin> GetAdminAsync(string username, string password)
         {
-            // Get a specific note.
             return database.Table<Admin>().Where(i => i.AdminUsername == username && i.AdminPassword == password).FirstOrDefaultAsync();
         }
         public Task<Admin> GetAdminAsync(int id)
         {
-            // Get a specific note.
             return database.Table<Admin>().Where(i => i.AdminID == id).FirstOrDefaultAsync();
         }
 
         /* ** ** ** ** User ** ** ** **  */
-        public Task< List<User> > GetUsersAsync()
+        public Task<List<User>> GetUsersAsync()
         {
-            //Get all notes.
             return database.Table<User>().ToListAsync();
         }
         public Task<User> GetUserAsync(int id)
         {
-            // Get a specific note.
             return database.Table<User>()
                             .Where(i => i.UserID == id)
                             .FirstOrDefaultAsync();
         }
         public Task<User> GetUserAsync(string username)
         {
-            // Get a specific note.
             return database.Table<User>().Where(i => i.UserName == username).FirstOrDefaultAsync();
         }
         public Task<User> GetUserAsync(string username, string password)
         {
-            // Get a specific note.
             return database.Table<User>()
                             .Where(i => i.UserName == username && i.UserPassword == password)
                             .FirstOrDefaultAsync();
@@ -83,12 +76,10 @@ namespace SoftwareEngineeringFinalProject.Data
         {
             if (user.UserID != 0)
             {
-                // Update an existing note.
                 return database.UpdateAsync(user);
             }
             else
             {
-                // Save a new note.
                 return database.InsertAsync(user);
             }
         }
@@ -113,7 +104,7 @@ namespace SoftwareEngineeringFinalProject.Data
         }
         public Task<int> SaveOccasionAsync(Occasions o)
         {
-            if(o.OccasionID != 0)
+            if (o.OccasionID != 0)
             {
                 return database.UpdateAsync(o);
             }
@@ -127,16 +118,51 @@ namespace SoftwareEngineeringFinalProject.Data
             return database.DeleteAsync(o);
         }
 
+        /* ** ** ** ** Arrangements ** ** ** **  */
+        public Task<List<FlowerArrangement>> GetFlowerArrangementsAsync()
+        {
+            return database.Table<FlowerArrangement>().ToListAsync();
+        }
+        public Task<FlowerArrangement> GetFlowerArrangementByName(string fname)
+        {
+            return database.Table<FlowerArrangement>()
+                            .Where(i => i.FlowerArrangementName == fname).FirstOrDefaultAsync();
+        }
+        public Task<List<FlowerArrangement>> GetFlowerArrangementsByFlowerID(int ID)
+        {
+            return database.Table<FlowerArrangement>()
+                           .Where(i => i.FlowerID == ID)
+                           .ToListAsync();
+        }
+        public Task<List<FlowerArrangement>> GetFlowerArrangementsByCategory(string cat)
+        {
+            return database.Table<FlowerArrangement>().Where(i => i.Category == cat).ToListAsync();
+        }
+            public Task<int> DeleteFlowerArrangement(FlowerArrangement flower)
+        {
+            return database.DeleteAsync(flower);
+        }
+        public Task<int> SaveFlowerArrangement(FlowerArrangement flower)
+        {
+            if (flower.FlowerArrangementID != 0)
+            {
+                return database.UpdateAsync(flower);
+            }
+            else
+            {
+                return database.InsertAsync(flower);
+            }
+        }
+
+
         /* ** ** ** ** Payment ** ** ** **  */
         public Task<List<Payment>> GetPaymentsAsync()
         {
-            //Get all notes.
             return database.Table<Payment>().ToListAsync();
         }
 
         public Task<Payment> GetPaymentAsync(int id)
         {
-            // Get a specific note.
             return database.Table<Payment>()
                             .Where(i => i.PaymentID == id)
                             .FirstOrDefaultAsync();
@@ -146,39 +172,33 @@ namespace SoftwareEngineeringFinalProject.Data
         {
             if (p.PaymentID != 0)
             {
-                // Update an existing note.
                 return database.UpdateAsync(p);
             }
             else
             {
-                // Save a new note.
                 return database.InsertAsync(p);
             }
         }
 
         public Task<int> DeletePaymentAsync(Payment p)
         {
-            // Delete a note.
             return database.DeleteAsync(p);
         }
 
-        /* ** ** ** ** Flowers ** ** ** **  */
+        /* ** ** ** ** Categories ** ** ** **  */
         public Task<List<Flower>> GetFlowersAsync()
         {
-            //Get all notes.
             return database.Table<Flower>().ToListAsync();
         }
 
         public Task<Flower> GetFlowerAsync(int id)
         {
-            // Get a specific note.
             return database.Table<Flower>()
                             .Where(i => i.FlowerID == id)
                             .FirstOrDefaultAsync();
         }
         public Task<Flower> GetFlowerAsync(string name)
         {
-            // Get a specific note.
             return database.Table<Flower>()
                             .Where(i => i.FlowerName == name)
                             .FirstOrDefaultAsync();
@@ -188,20 +208,30 @@ namespace SoftwareEngineeringFinalProject.Data
         {
             if (flower.FlowerID != 0)
             {
-                // Update an existing note.
                 return database.UpdateAsync(flower);
             }
             else
             {
-                // Save a new note.
                 return database.InsertAsync(flower);
             }
         }
 
         public Task<int> DeleteFlowerAsync(Flower flower)
         {
-            // Delete a note.
             return database.DeleteAsync(flower);
+        }
+
+        //* ** ** ** ** CART ITEM ** ** ** *** ** *//
+        public Task<int> SaveCartItemAsync(CartItem cartItem)
+        {
+            if (cartItem.CartItemID != 0)
+            {
+                return database.UpdateAsync(cartItem);
+            }
+            else
+            {
+                return database.InsertAsync(cartItem);
+            }
         }
     }
 }
