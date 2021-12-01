@@ -48,24 +48,10 @@ namespace SoftwareEngineeringFinalProject
             {
                 await DisplayAlert("Error", "Last Name is not valid", "OK");
             }
-            /*
-            Models.Payment payment = new Models.Payment
-                {
-                    FirstName = first.Text,
-                    LastName = last.Text,
-                    CreditCardNumber = ccn.Text,
-                    ExpDate = expDate.Date,
-                    Phone = phone.Text,
-                    Address = address.Text,
-                    City = city.Text,
-                    State = state.Text,
-                    Country = country.Text,
-                    ZipCode = zipCode.Text
-                };
-                await App.DB.SavePaymentAsync(payment);
-                await DisplayAlert("Saved", "Payment information saved", "OK");
-                await Navigation.PushAsync(new PaymentsCollectionPage());
-            */
+            else if (await App.DB.GetUserAsync(Entry_Username.Text) != null)
+            {
+                await DisplayAlert("Error", "Username is already taken", "OK");
+            }
             else
             {
                 Models.Cart cart = new Models.Cart
