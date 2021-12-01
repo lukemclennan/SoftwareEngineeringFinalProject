@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SoftwareEngineeringFinalProject.AdminDeleteFlower">
+    <ContentPage.Content>
+        <ScrollView>
+           <StackLayout BackgroundColor="#7EA172">
+                <Label Text = "Flower Options"
+                    HorizontalOptions="Center"
+                    FontSize="Title"
+                    FontAttributes="Bold, Italic"
+                    TextColor="#502419"/>
+               <!--ADD CATEGORY-->
+                <Label Text="Add Category"
+                       FontAttributes="Bold"
+                       FontSize="Title"
+                       HorizontalOptions="Center"
+                       TextColor="#502419"
+                       Margin="0,30,0,0"/>
+                <Entry Placeholder="Enter the Name of the Category" PlaceholderColor="#502419"  x:Name="Entry_fname" BackgroundColor="#C7CB85" />
+                <!--<Entry Placeholder="Enter the Price of the Flower" PlaceholderColor="#502419" x:Name="Entry_cost" BackgroundColor="#C7CB85" /> -->
+                <Entry Placeholder="Image URL: https://www.domain.com/image.jpg" PlaceholderColor="#502419" x:Name="Entry_URL" BackgroundColor="#C7CB85" />
+                <Button Text="Add Category" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" CornerRadius="45" HorizontalOptions="Center" Clicked="addFlower"/>
+                <!-- REMOVE LATER Update FLOWER PRICE-->
+                <!--
+                <Label Text="Edit Flower Price"
+                      FontAttributes="Bold"
+                      FontSize="Title"
+                      HorizontalOptions="Center"
+                      TextColor="#502419"
+                      Margin="0,30,0,0"/>
+               <Entry Placeholder="Enter the Name of the Flower" PlaceholderColor="#502419" x:Name="Entry_fname2" BackgroundColor="#C7CB85"/>
+               <Entry Placeholder="Enter The New Price of the Flower" BackgroundColor="#C7CB85" x:Name="Entry_cost2" PlaceholderColor="#502419" />
+               <Button Text="Update Price" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="updateFlowerPrice"/>
+               -->
+               <!--DELETE CATEGORY-->
+               <Label Text="Delete Category"
+                      FontAttributes="Bold"
+                      FontSize="Title"
+                      HorizontalOptions="Center"
+                      TextColor="#502419"
+                      Margin="0,30,0,0"/>
+                <Entry Placeholder="Enter the Name of the Category" PlaceholderColor="#502419" x:Name="Entry_fname3" BackgroundColor="#C7CB85"/>
+                <Button TextColor = "#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="findAndDeleteFlower" Text="Find and Remove"/>
+                <!--ADD Arrangement-->
+                <Label Text="Add Flower Arrangement"
+                       FontAttributes="Bold"
+                       FontSize="Title"
+                       HorizontalOptions="Center"
+                       TextColor="#502419"
+                       Margin="0,30,0,0"/>
+                <Entry Placeholder="Enter the Name of the Flower Arrangement" PlaceholderColor="#502419"  x:Name="Entry_fname5" BackgroundColor="#C7CB85" />
+                <Entry Placeholder="Enter the Price of the Flower Arrangement" PlaceholderColor="#502419" x:Name="Entry_cost5" BackgroundColor="#C7CB85" />
+                <Entry Placeholder="Enter the Category of the Flower Arrangement" PlaceholderColor="#502419" x:Name="Entry_cat1" BackgroundColor="#C7CB85" />
+                <Entry Placeholder="Enter the Description of the Flower Arrangement" PlaceholderColor="#502419" x:Name="Entry_desc" BackgroundColor="#C7CB85" />
+                <Entry Placeholder="Image URL: https://www.domain.com/image.jpg" PlaceholderColor="#502419" x:Name="Entry_URL3" BackgroundColor="#C7CB85" />
+                <Button Text="Add Flower" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" CornerRadius="45" HorizontalOptions="Center" Clicked="addFlowerArrangement"/>
+                <!--Update ARRANGMENT PRICE--> 
+                <Label Text="Edit Arrangement Price"
+                      FontAttributes="Bold"
+                      FontSize="Title"
+                      HorizontalOptions="Center"
+                      TextColor="#502419"
+                      Margin="0,30,0,0"/>
+               <Entry Placeholder="Enter the Name of the Flower Arrangement" PlaceholderColor="#502419" x:Name="Entry_fname6" BackgroundColor="#C7CB85"/>
+               <Entry Placeholder="Enter The New Price of the Flower Arrangement" BackgroundColor="#C7CB85" x:Name="Entry_cost6" PlaceholderColor="#502419" />
+               <Entry Placeholder="Enter the New Description of the Flower Arrangement" PlaceholderColor="#502419" x:Name="Entry_desc2" BackgroundColor="#C7CB85" />
+               <Button Text="Update Price" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="updateArrangementPrice"/>
+               <!--DELETE ARRANGEMENT-->
+               <Label Text="Delete Arrangement"
+                      FontAttributes="Bold"
+                      FontSize="Title"
+                      HorizontalOptions="Center"
+                      TextColor="#502419"
+                      Margin="0,30,0,0"/>
+                <Entry Placeholder="Enter the Name of the Flower Arrangememnt" PlaceholderColor="#502419" x:Name="Entry_fname7" BackgroundColor="#C7CB85"/>
+                <Button TextColor = "#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="findAndDeleteFlowerArrangement" Text="Find and Remove"/>
+               <!--ADD OCCASION-->
+                <Label Text="Add Occasion"
+                      FontAttributes="Bold"
+                      FontSize="Title"
+                      HorizontalOptions="Center"
+                      TextColor="#502419"
+                      Margin="0,30,0,0"/>
+               <Entry Placeholder="Enter Name of Occasion" PlaceholderColor="#502419" x:Name="Entry_Occ" BackgroundColor="#C7CB85"/>
+               <Entry Placeholder="Enter Price of Arrangment" BackgroundColor="#C7CB85" x:Name="Entry_cost3" PlaceholderColor="#502419"/>
+               <Entry Placeholder="Image URL: https://www.domain.com/image.jpg" PlaceholderColor="#502419" x:Name="Entry_URL2" BackgroundColor="#C7CB85" />
+               <Button Text="Add Occasion" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="addOccasion"/>
+               <!--EDIT OCCASION PRICE-->
+               <Label Text="Edit Occasion Price"
+                      FontAttributes="Bold"
+                      FontSize="Title"
+                      HorizontalOptions="Center"
+                      TextColor="#502419"
+                      Margin="0,30,0,0"/>
+               <Entry Placeholder="Enter the Name of the Occasion" PlaceholderColor="#502419" x:Name="Entry_fname4" BackgroundColor="#C7CB85"/>
+               <Entry Placeholder="Enter The New Price of the Occasion" BackgroundColor="#C7CB85" x:Name="Entry_cost4" PlaceholderColor="#502419" />
+               <Button Text="Update Occasion Price" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="updateOccaionPrice"/>
+               <!--DELETE OCCASION-->
+               <Label Text="Delete Occasion"
+                      FontAttributes="Bold"
+                      FontSize="Title"
+                      HorizontalOptions="Center"
+                      TextColor="#502419"
+                      Margin="0,30,0,0"/>
+               <Entry Placeholder="Enter Name of Occasion" PlaceholderColor="#502419" x:Name="Entry_Occ2" BackgroundColor="#C7CB85"/>
+               <Button Text="Find and Delete Occasion" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="deleteOccasion"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
