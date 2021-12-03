@@ -22,7 +22,37 @@ namespace SoftwareEngineeringFinalProject.Data
             database.CreateTableAsync<Occasions>().Wait();
             database.CreateTableAsync<Cart>().Wait();
             database.CreateTableAsync<CartItem>().Wait();
+
+
+            //occasions data
+            Occasions birthdayCelebration = new Occasions
+            {
+                OccasionName = "Birthday Celebration",
+                CostPerOccasion = 54.95,
+                ImagePath = "https://www.scottsflowers.com/images/telsg10/T28-1^1xg.jpg"
+            };
+            Occasions christmasWishesCenterpiece = new Occasions
+            {
+                OccasionName = "Christmas Wishes Centerpiece",
+                CostPerOccasion = 69.95,
+                ImagePath = "https://www.scottsflowers.com/images/T127-1xg.jpg"
+            };
+            Occasions newYearsRadianRouge = new Occasions
+            {
+                OccasionName = "New Year's Radiant Rouge",
+                CostPerOccasion = 99.95,
+                ImagePath = "https://www.scottsflowers.com/images/flowerclique/FCRV-13lg.jpg"
+            };
+
+            if (GetOccasionAsync(birthdayCelebration.OccasionName) == null)
+                SaveOccasionAsync(birthdayCelebration);
+            if (GetOccasionAsync(christmasWishesCenterpiece.OccasionName) == null)
+                SaveOccasionAsync(birthdayCelebration);
+            if (GetOccasionAsync(newYearsRadianRouge.OccasionName) == null)
+                SaveOccasionAsync(birthdayCelebration);
+
         }
+
         /* ** ** ** ** Admin ** ** ** **  */
         public Task<int> SaveAdminAsyn(Admin admin)
         {
