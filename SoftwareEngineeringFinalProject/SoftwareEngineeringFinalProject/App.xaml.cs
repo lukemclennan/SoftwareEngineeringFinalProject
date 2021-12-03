@@ -1,4 +1,4 @@
-﻿using SoftwareEngineeringFinalProject.Data;
+using SoftwareEngineeringFinalProject.Data;
 using SoftwareEngineeringFinalProject.Models;
 using System;
 using System.IO;
@@ -47,6 +47,35 @@ namespace SoftwareEngineeringFinalProject
         public App()
         {
             InitializeComponent();
+
+            //database
+
+            //occasions data
+            Models.Occasions birthdayCelebration = new Models.Occasions
+            {
+                OccasionName = "Birthday Celebration",
+                CostPerOccasion = 54.95,
+                ImagePath = "https://www.scottsflowers.com/images/telsg10/T28-1^1xg.jpg"
+            };
+            Models.Occasions christmasWishesCenterpiece = new Models.Occasions
+            {
+                OccasionName = "Christmas Wishes Centerpiece",
+                CostPerOccasion = 69.95,
+                ImagePath = "https://www.scottsflowers.com/images/T127-1xg.jpg"
+            };
+            Models.Occasions newYearsRadianRouge = new Models.Occasions
+            {
+                OccasionName = "New Year's Radiant Rouge",
+                CostPerOccasion = 99.95,
+                ImagePath = "https://www.scottsflowers.com/images/flowerclique/FCRV-13lg.jpg"
+            };
+
+            if (DB.GetOccasionAsync(birthdayCelebration.OccasionName) == null)
+                DB.SaveOccasionAsync(birthdayCelebration);
+            if (DB.GetOccasionAsync(christmasWishesCenterpiece.OccasionName) == null)
+                DB.SaveOccasionAsync(birthdayCelebration);
+            if (DB.GetOccasionAsync(newYearsRadianRouge.OccasionName) == null)
+                DB.SaveOccasionAsync(birthdayCelebration);
 
             MainPage = new NavigationPage( new LoginPage());
         }
