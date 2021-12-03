@@ -1,11 +1,11 @@
-﻿using SQLite;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SoftwareEngineeringFinalProject.Models
 {
-    class FlowerArrangement
+    public class FlowerArrangement
     {
         [PrimaryKey, AutoIncrement]
         public int FlowerArrangementID { get; set; }
@@ -15,6 +15,11 @@ namespace SoftwareEngineeringFinalProject.Models
         public bool IsOccasion { get; set; }
         public string Occasion { get; set; }
         public bool IsVase { get; set; }
+        public string Category { get; set; }
+        public string Description { get; set; }
+        public string ImagePath { get; set; }
+        public double costPerArrangement { get; set; }
+
         public double GetPrice()
         {
             return 0.0;
