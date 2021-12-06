@@ -15,13 +15,9 @@ namespace SoftwareEngineeringFinalProject
         public AdminModeTabbedPage()
         {
             InitializeComponent();
-            this.Children.Add(new ContentPage
+            this.Children.Add(new ViewFlowersPage
             {
-                Title = "Home",
-                Content = new Label
-                {
-                    Text = "List of Flowers will go here"
-                }
+                Title = "Home"
             });
             this.Children.Add(new AdminDisplayUsers
             {
