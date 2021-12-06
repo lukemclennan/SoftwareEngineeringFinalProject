@@ -26,14 +26,6 @@ namespace SoftwareEngineeringFinalProject
             {
                 Title = "Occasions"
             });
-            this.Children.Add(new ContentPage
-            {
-                Title = "Arrangments",
-                Content = new Label
-                {
-                    Text = "Arrangments page will go here"
-                }
-            });
             this.Children.Add(new AdminLoginPage
             {
                 Title = "Admin Mode"
