@@ -9,6 +9,8 @@ namespace SoftwareEngineeringFinalProject
     public partial class AdminDeleteFlower : ContentPage
     {
         private string fname;
+        private string category;
+        private string description;
         private string cost;
         private string url;
 
@@ -39,7 +41,6 @@ namespace SoftwareEngineeringFinalProject
         async void addFlower(Object sender, EventArgs e)
         {
             fname = Entry_fname.Text;
-            cost = Entry_cost.Text;
             url = Entry_URL.Text;
 
             if (fname == null || cost == null || url == null)
@@ -51,7 +52,6 @@ namespace SoftwareEngineeringFinalProject
                 Models.Flower flower = new Models.Flower
                 {
                     FlowerName = fname,
-                    CostPerFlower = ConvertToDouble(cost),
                     ImagePath = url
                 };
                 await App.DB.SaveFlowerAsync(flower);
@@ -60,11 +60,11 @@ namespace SoftwareEngineeringFinalProject
 
         }
 
+        /*
         async void updateFlowerPrice(Object sender, EventArgs e)
         {
             fname = Entry_fname2.Text;
             cost = Entry_cost2.Text;
-
             //invalid entry 
             if (fname == null || cost == null)
             {
@@ -85,12 +85,13 @@ namespace SoftwareEngineeringFinalProject
                 }
             }
         }
+        */
 
 
         async void findAndDeleteFlower(Object sender, EventArgs e)
         {
             fname = Entry_fname3.Text;
- 
+
             //invalid entry 
             if (fname == null)
             {
@@ -110,8 +111,89 @@ namespace SoftwareEngineeringFinalProject
                 }
             }
         }
+        /* **************************** */
+        async void addFlowerArrangement(Object sender, EventArgs e)
+        {
+            fname = Entry_fname5.Text;
+            category = Entry_cat1.Text;
+            description = Entry_desc.Text;
+            cost = Entry_cost5.Text;
+            url = Entry_URL3.Text;
 
- 
+            if (fname == null || cost == null || url == null || category == null || description == null)
+            {
+                await DisplayAlert("Error", "One or Multiple Entry Fields are empty", "Ok");
+            }
+            else
+            {
+                Models.FlowerArrangement flowerArr = new Models.FlowerArrangement
+                {
+                    FlowerArrangementName = fname,
+                    Category = category,
+                    Description = description,
+                    costPerArrangement = ConvertToDouble(cost),
+                    ImagePath = url
+                };
+                await App.DB.SaveFlowerArrangement(flowerArr);
+                await DisplayAlert("Success", "New flower added", "Ok");
+            }
+
+        }
+
+        async void updateArrangementPrice(Object sender, EventArgs e)
+        {
+            fname = Entry_fname6.Text;
+            cost = Entry_cost6.Text;
+            description = Entry_desc2.Text;
+
+            //invalid entry 
+            if (fname == null || cost == null || description == null)
+            {
+                await DisplayAlert("Error", "One or Both Entry Fields are empty", "Ok");
+            }
+            else
+            {
+                Models.FlowerArrangement flowerArr = await App.DB.GetFlowerArrangementByName(fname);
+                if (flowerArr == null)
+                {
+                    await DisplayAlert("Error", "Flower Arrangement does not Exist", "Ok");
+                }
+                else
+                {
+                    flowerArr.costPerArrangement = ConvertToDouble(cost);
+                    flowerArr.Description = description;
+                    await App.DB.SaveFlowerArrangement(flowerArr);
+                    await DisplayAlert("Success", "Successfuly Updated Flower Price", "Ok");
+                }
+            }
+        }
+
+
+        async void findAndDeleteFlowerArrangement(Object sender, EventArgs e)
+        {
+            fname = Entry_fname7.Text;
+
+            //invalid entry 
+            if (fname == null)
+            {
+                await DisplayAlert("Error", "Entry Fields are empty", "Ok");
+            }
+            else
+            {
+                Models.FlowerArrangement flowerArr = await App.DB.GetFlowerArrangementByName(fname);
+                if (flowerArr == null)
+                {
+                    await DisplayAlert("Error", "Flower does not Exist", "Ok");
+                }
+                else
+                {
+                    await App.DB.DeleteFlowerArrangement(flowerArr);
+                    await DisplayAlert("Success", "Successfuly Removed Flower", "Ok");
+                }
+            }
+        }
+
+
         async void addOccasion(Object sender, EventArgs e)
         {
             fname = Entry_Occ.Text;
@@ -183,7 +265,6 @@ namespace SoftwareEngineeringFinalProject
             }
         }
 
-    
+
     }
 }
-
