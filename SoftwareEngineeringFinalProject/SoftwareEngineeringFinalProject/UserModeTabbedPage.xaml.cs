@@ -18,13 +18,9 @@ namespace SoftwareEngineeringFinalProject
         public UserModeTabbedPage()
         {
             InitializeComponent();
-            this.Children.Add(new ContentPage
+            this.Children.Add(new HomePage
             {
-                Title = "Home",
-                Content = new Label
-                {
-                    Text = "Home page will go here"
-                }
+                Title = "Home"
             });
             this.Children.Add(new OccasionsPage
             {
