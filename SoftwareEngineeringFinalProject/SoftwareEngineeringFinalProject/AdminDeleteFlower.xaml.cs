@@ -193,14 +193,14 @@ namespace SoftwareEngineeringFinalProject
             }
         }
 
-
         async void addOccasion(Object sender, EventArgs e)
         {
             fname = Entry_Occ.Text;
             cost = Entry_cost3.Text;
             url = Entry_URL2.Text;
+            occasionCategory = Entry_OccCategory.Text;
 
-            if (fname == null || cost == null || url == null)
+            if (fname == null || cost == null || url == null || occasionCategory == null)
             {
                 await DisplayAlert("Error", "One or Multiple Entry Fields are empty", "Ok");
             }
@@ -210,7 +210,8 @@ namespace SoftwareEngineeringFinalProject
                 {
                     OccasionName = fname,
                     CostPerOccasion = ConvertToDouble(cost),
-                    ImagePath = url
+                    ImagePath = url,
+                    OccasionCategory = occasionCategory 
                 };
                 await App.DB.SaveOccasionAsync(occ);
                 await DisplayAlert("Success", "New Occasion Arrangment added", "Ok");
