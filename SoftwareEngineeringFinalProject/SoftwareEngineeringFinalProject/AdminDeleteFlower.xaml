@@ -76,6 +76,7 @@
                       Margin="0,30,0,0"/>
                 <Entry Placeholder="Enter the Name of the Flower Arrangememnt" PlaceholderColor="#502419" x:Name="Entry_fname7" BackgroundColor="#C7CB85"/>
                 <Button TextColor = "#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="findAndDeleteFlowerArrangement" Text="Find and Remove"/>
+
                <!--ADD OCCASION-->
                 <Label Text="Add Occasion"
                       FontAttributes="Bold"
@@ -83,10 +84,12 @@
                       HorizontalOptions="Center"
                       TextColor="#502419"
                       Margin="0,30,0,0"/>
+               <Entry Placeholder="Enter Category for Occasion" PlaceholderColor="#502419" x:Name="Entry_OccCategory" BackgroundColor="#C7CB85"/>
                <Entry Placeholder="Enter Name of Occasion" PlaceholderColor="#502419" x:Name="Entry_Occ" BackgroundColor="#C7CB85"/>
                <Entry Placeholder="Enter Price of Arrangment" BackgroundColor="#C7CB85" x:Name="Entry_cost3" PlaceholderColor="#502419"/>
                <Entry Placeholder="Image URL: https://www.domain.com/image.jpg" PlaceholderColor="#502419" x:Name="Entry_URL2" BackgroundColor="#C7CB85" />
                <Button Text="Add Occasion" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="addOccasion"/>
+
                <!--EDIT OCCASION PRICE-->
                <Label Text="Edit Occasion Price"
                       FontAttributes="Bold"
