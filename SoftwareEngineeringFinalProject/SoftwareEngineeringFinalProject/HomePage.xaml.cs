@@ -1,4 +1,4 @@
-﻿using SoftwareEngineeringFinalProject.Models;
+using SoftwareEngineeringFinalProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,19 +24,13 @@ namespace SoftwareEngineeringFinalProject
         {
             base.OnAppearing();
 
-            List<Flower> flowers = await App.DB.GetFlowersAsync();
-            flowers.Add(new Flower
-            {
-                FlowerName = "All",
-                FlowerID = -1
-            });
-            collectionView.ItemsSource = flowers;
+            collectionView.ItemsSource = await App.DB.GetFlowersAsync();
         }
 
         private async void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int flowerID = ((Flower)e.CurrentSelection.FirstOrDefault()).FlowerID;
-            await Navigation.PushAsync(new ViewArrangements(flowerID));
+            Flower flowerID = ((Flower)e.CurrentSelection.FirstOrDefault());
+            await Navigation.PushAsync(new ViewArrangements(flowerID.FlowerName));
             //bool addToCart = await DisplayAlert("Add to Cart?", "Would you like to add " + flower.FlowerName + " to your cart?", "Yes", "No");
             //if (addToCart)
             //{

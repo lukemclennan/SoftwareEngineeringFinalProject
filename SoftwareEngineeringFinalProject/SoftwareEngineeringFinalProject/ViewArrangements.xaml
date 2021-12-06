@@ -20,12 +20,15 @@
                         <Label Text="{Binding FlowerArrangementName, StringFormat='Arrangement Name: {0}'}"
                                FontSize="Large"
                                TextColor="#502419"/>
-                        <Label Text="{Binding CostPerArrangement, StringFormat='Cost: ${0:F2}'}"
+                        <Label Text="{Binding costPerArrangement, StringFormat='Cost: ${0:F2}'}"
                                FontSize="Medium"
                                TextColor="#502419" />
                         <Image Source="{Binding ImagePath}"
                                WidthRequest="150"
                                HeightRequest="150"/>
+                        <Label Text="{Binding Description, StringFormat='Description: {0}'}"
+                               FontSize="Medium"
+                               TextColor="#502419"/>
                         <Line HeightRequest="5"
                               WidthRequest="420"
                               BackgroundColor="#C7CB85"

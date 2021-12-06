@@ -18,34 +18,19 @@ namespace SoftwareEngineeringFinalProject
         public UserModeTabbedPage()
         {
             InitializeComponent();
-            /*this.Children.Add(new ContentPage
+            this.Children.Add(new HomePage
             {
-                Title = "Home",
-                Content = new Label
-                {
-                    Text = "Home page will go here"
-                }
-            });*/
-            Children.Add(new HomePage());
-            Children.Add(new ContentPage
-            {
-                Title = "Occasions",
-                Content = new Label
-                {
-                    Text = "Occasions page will go here"
-                }
+                Title = "Home"
             });
-            //Children.Add(new ContentPage
-            //{
-            //    Title = "Arrangments",
-            //    Content = new Label
-            //    {
-            //        Text = "Arrangments page will go here"
-            //    }
-            //});
-            Children.Add(new CartPage());
-            this.Children.Add(new AdminLoginPage());
-            Children.Add(new AboutPageV2
+            this.Children.Add(new OccasionsPage
+            {
+                Title = "Occasions"
+            });
+            this.Children.Add(new AdminLoginPage
+            {
+                Title = "Admin Mode"
+            });
+            this.Children.Add(new AboutPageV2
             {
                 Title = "About"
             });

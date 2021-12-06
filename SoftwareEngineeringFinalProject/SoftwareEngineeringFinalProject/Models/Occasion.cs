@@ -12,5 +12,6 @@ namespace SoftwareEngineeringFinalProject.Models
         public string OccasionName { get; set; }
         public double CostPerOccasion { get; set; }
         public string ImagePath { get; set; }
+        public string OccasionCategory { get; set; }
     }
 }

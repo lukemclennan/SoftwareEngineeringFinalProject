@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,6 +18,6 @@ namespace SoftwareEngineeringFinalProject.Models
         public string Category { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
-        public float costPerArrangement { get; set; }
+        public double costPerArrangement { get; set; }
     }
 }
