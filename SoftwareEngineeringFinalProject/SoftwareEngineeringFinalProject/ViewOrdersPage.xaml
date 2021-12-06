@@ -3,37 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SoftwareEngineeringFinalProject.ViewOrdersPage"
              Title="Orders">
-    <StackLayout>
+    <StackLayout BackgroundColor="#7EA172">
         <!-- Display flowers in a list -->
         <CollectionView x:Name="collectionView"
                         Margin="20"
                         SelectionMode="Single"
                         SelectionChanged="SelectionChanged">
             <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical"/>
-            </CollectionView.ItemsLayout>
-            <!--<CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical"
-                                   
                                    ItemSpacing="10" />
-            </CollectionView.ItemsLayout>-->
+            </CollectionView.ItemsLayout>
             <!-- Define the appearance of each item in the list -->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
-                        <Line WidthRequest="100" HeightRequest="1" BackgroundColor="Black"></Line>
                         <Label Grid.Row="0" 
                                Grid.Column="1"
                                Text="{Binding Date}"
-                               FontSize="Medium" />
+                               FontSize="Medium"
+                               TextColor="#502419"  />
                         <Label Text="{Binding OrderID, StringFormat='OrderID: {0}'}"
                                FontSize="Medium" 
                                Grid.Row="1"
-                               Grid.Column="1"/>
+                               Grid.Column="1"
+                               TextColor="#502419" />
                         <Label Text="{Binding UserID, StringFormat='UserID: {0}'}"
                                FontSize="Medium" 
                                Grid.Row="1"
-                               Grid.Column="1"/>
+                               Grid.Column="1"
+                               TextColor="#502419" />
+                        <Line HeightRequest="5"
+                              WidthRequest="420"
+                              BackgroundColor="#C7CB85"
+                              HorizontalOptions="Center"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

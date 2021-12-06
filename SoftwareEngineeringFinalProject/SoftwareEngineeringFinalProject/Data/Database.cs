@@ -3,12 +3,13 @@ using System.Threading.Tasks;
 using SQLite;
 using SoftwareEngineeringFinalProject.Models;
 using System;
+using System.Collections;
 
 namespace SoftwareEngineeringFinalProject.Data
 {
     public class Database
     {
-        readonly SQLiteAsyncConnection database;
+        private readonly SQLiteAsyncConnection database;
 
         public Database(string dbPath)
         {
@@ -25,7 +26,27 @@ namespace SoftwareEngineeringFinalProject.Data
             database.CreateTableAsync<CartItem>().Wait();
         }
 
-       
+        public Task<Order> GetOrderAsync(int orderID)
+        {
+            return database.Table<Order>().Where(i => i.OrderID == orderID).FirstOrDefaultAsync();
+        }
+
+        public async Task<List<FlowerArrangement>> GetOrderArrangementsAsync(int orderID)
+        {
+            List<OrderItem> orderItems = await database.Table<OrderItem>().Where(i => i.OrderID == orderID).ToListAsync();
+            List<FlowerArrangement> flowerArrangements = new List<FlowerArrangement>();
+            foreach (OrderItem item in orderItems)
+            {
+                FlowerArrangement flowerArrangement = await GetFlowerArrangementAsync(item.FlowerArrangementID);
+                flowerArrangements.Add(flowerArrangement);
+            }
+            return flowerArrangements;
+        }
+
+        public Task<int> SaveCartAsync(Cart cart)
+        {
+            return database.InsertAsync(cart);
+        }
 
         public Task<int> DeleteCartItemAsync(CartItem cartItem)
         {
@@ -50,7 +71,7 @@ namespace SoftwareEngineeringFinalProject.Data
             List<FlowerArrangement> flowerArrangements = new List<FlowerArrangement>();
             foreach (CartItem cartItem in cartItems)
             {
-                FlowerArrangement flowerArrangement = await GetFlowerArrangementAsync(cartItem.CartID);
+                FlowerArrangement flowerArrangement = await GetFlowerArrangementAsync(cartItem.FlowerArrangementID);
                 flowerArrangements.Add(flowerArrangement);
             }
             return flowerArrangements;
@@ -58,7 +79,7 @@ namespace SoftwareEngineeringFinalProject.Data
 
         public Task<List<CartQueryResult>> GetCartArrangementsAsync2(int cartID)
         {
-            return database.QueryAsync<CartQueryResult>($"SELECT c.CartItemID, c.FlowerArrangementID, f.FlowerArrangementName, f.IsOccasion, f.FlowerID FROM FlowerArrangement f INNER JOIN CartItem c ON f.FlowerArrangementID = c.FlowerArrangementID WHERE c.CartID = {cartID}");
+            return database.QueryAsync<CartQueryResult>($"SELECT c.CartItemID, c.FlowerArrangementID, f.FlowerArrangementName, f.IsOccasion, f.FlowerID, f.costPerArrangement FROM FlowerArrangement f INNER JOIN CartItem c ON f.FlowerArrangementID = c.FlowerArrangementID WHERE c.CartID = {cartID}");
         }
 
         public Task<int> SaveAdminAsyn(Admin admin)
@@ -272,8 +293,13 @@ namespace SoftwareEngineeringFinalProject.Data
         {
             // Get a specific note.
             return database.Table<FlowerArrangement>()
-                            .Where(i => i.FlowerID == id)
+                            .Where(i => i.FlowerArrangementID == id)
                             .FirstOrDefaultAsync();
+        }
+
+        public Task<List<FlowerArrangement>> GetFlowerArrangementsByCategory(int flowerID)
+        {
+            return database.Table<FlowerArrangement>().Where(i => i.FlowerID == flowerID).ToListAsync();
         }
 
         public Task<int> SaveFlowerArrangementAsync(FlowerArrangement flowerArrangement)

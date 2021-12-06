@@ -7,6 +7,10 @@
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="#7EA172" />
             </Style>
+            <Style TargetType="TabbedPage">
+                <Setter Property="UnselectedTabColor" Value="#7EA172" />
+                <Setter Property="SelectedTabColor" Value="#7EA172" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

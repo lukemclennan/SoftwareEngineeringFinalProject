@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftwareEngineeringFinalProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,9 +25,10 @@ namespace SoftwareEngineeringFinalProject
             collectionView.ItemsSource = await App.DB.GetOrdersAsync();
         }
 
-        private void SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            int id = ((Order)e.CurrentSelection.FirstOrDefault()).OrderID;
+            await Navigation.PushAsync(new ViewSingleOrder(id));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftwareEngineeringFinalProject.Models;
+using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -54,11 +55,11 @@ namespace SoftwareEngineeringFinalProject
             }
             else
             {
-                Models.Cart cart = new Models.Cart
-                {
-                };
+                Cart cart = new Cart();
 
-                Models.User user = new Models.User
+                await App.DB.SaveCartAsync(cart);
+
+                User user = new User
                 {
                     UserName = Entry_Username.Text,
                     UserPassword = Entry_Password.Text,
@@ -66,6 +67,11 @@ namespace SoftwareEngineeringFinalProject
                     LastName = Entry_Lastname.Text,
                     CartID = cart.CartID
                 };
+
+                //user.CreateCart();
+
+                await DisplayAlert("Test", "CartID is " + user.CartID, "OK");
+
 
                 await App.DB.SaveUserAsync(user);
 

@@ -37,8 +37,11 @@
                                Grid.Column="1"
                                Text="{Binding FlowerName}"
                                FontSize="Medium" />
-                        <Label Text="{Binding CostPerFlower, StringFormat='${0:F2}'}"
+                        <!--<Label Text="{Binding CostPerFlower, StringFormat='${0:F2}'}"
                                FontSize="Medium" 
+                               Grid.Row="1"
+                               Grid.Column="1"/>-->
+                        <Label Text=""
                                Grid.Row="1"
                                Grid.Column="1"/>
                     </Grid>

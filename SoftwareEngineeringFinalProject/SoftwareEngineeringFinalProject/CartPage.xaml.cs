@@ -21,8 +21,6 @@ namespace SoftwareEngineeringFinalProject
         {
             base.OnAppearing();
 
-            //collectionView.ItemsSource = await App.DB.GetCartItemsAsync(App.User.CartID);
-
             collectionView.ItemsSource = await App.DB.GetCartArrangementsAsync2(App.User.CartID);
         }
 

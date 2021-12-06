@@ -24,28 +24,35 @@ namespace SoftwareEngineeringFinalProject
         {
             base.OnAppearing();
 
-            collectionView.ItemsSource = await App.DB.GetFlowersAsync();
+            List<Flower> flowers = await App.DB.GetFlowersAsync();
+            flowers.Add(new Flower
+            {
+                FlowerName = "All",
+                FlowerID = -1
+            });
+            collectionView.ItemsSource = flowers;
         }
 
         private async void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Flower flower = (Flower)e.CurrentSelection.FirstOrDefault();
-            bool addToCart = await DisplayAlert("Add to Cart?", "Would you like to add " + flower.FlowerName + " to your cart?", "Yes", "No");
-            if (addToCart)
-            {
-                FlowerArrangement flowerArrangement = new FlowerArrangement {
-                    FlowerID = flower.FlowerID,
-                    FlowerArrangementName = flower.FlowerName + " Arrangement"
-                };
-                await App.DB.SaveFlowerArrangementAsync(flowerArrangement);
-                CartItem cartItem = new CartItem { 
-                    CartID = App.User.CartID,
-                    FlowerArrangementID = flowerArrangement.FlowerArrangementID
-                };
-                //await DisplayAlert("FlowerArrangmentID", flowerArrangement.FlowerArrangementID.ToString(), "Ok");
-                await App.DB.SaveCartItemAsync(cartItem);
-                await DisplayAlert("Success", "Item added to cart.", "Ok");
-            }
+            int flowerID = ((Flower)e.CurrentSelection.FirstOrDefault()).FlowerID;
+            await Navigation.PushAsync(new ViewArrangements(flowerID));
+            //bool addToCart = await DisplayAlert("Add to Cart?", "Would you like to add " + flower.FlowerName + " to your cart?", "Yes", "No");
+            //if (addToCart)
+            //{
+            //    FlowerArrangement flowerArrangement = new FlowerArrangement {
+            //        FlowerID = flower.FlowerID,
+            //        FlowerArrangementName = flower.FlowerName + " Arrangement"
+            //    };
+            //    await App.DB.SaveFlowerArrangementAsync(flowerArrangement);
+            //    CartItem cartItem = new CartItem { 
+            //        CartID = App.User.CartID,
+            //        FlowerArrangementID = flowerArrangement.FlowerArrangementID
+            //    };
+            //    //await DisplayAlert("FlowerArrangmentID", flowerArrangement.FlowerArrangementID.ToString(), "Ok");
+            //    await App.DB.SaveCartItemAsync(cartItem);
+            //    await DisplayAlert("Success", "Item added to cart.", "Ok");
+            //}
         }
     }
 }

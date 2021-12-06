@@ -4,6 +4,7 @@
              x:Class="SoftwareEngineeringFinalProject.CartPage"
              Title="Cart">
     <StackLayout>
+        <Label Text="Click to remove from cart" />
         <!-- Display cart items in a list -->
         <CollectionView x:Name="collectionView"
                         Margin="20"
