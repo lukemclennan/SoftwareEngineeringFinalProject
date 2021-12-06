@@ -20,15 +20,18 @@ namespace SoftwareEngineeringFinalProject
                 if (db == null)
                 {
                     db = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Database.db3"));
-                    User testUser = new User
-                    {
-                        UserName = "test",
-                        UserPassword = "1234",
-                        FirstName = "FirstName",
-                        LastName = "LastName",
-                        CartID = 0
-                    };
-                    db.SaveUserAsync(testUser);
+                    //if (db.GetUserAsync("test", "1234") == null)
+                    //{
+                    //    User testUser = new User
+                    //    {
+                    //        UserName = "test",
+                    //        UserPassword = "1234",
+                    //        FirstName = "FirstName",
+                    //        LastName = "LastName"
+                    //    };
+                    //    testUser.CreateCart();
+                    //    db.SaveUserAsync(testUser);
+                    //}
                 }
                 return db;
             }

@@ -7,18 +7,14 @@ using Xamarin.Forms;
 
 namespace SoftwareEngineeringFinalProject
 {
-    public class ViewPaymentsPage : ContentPage
+    public class ViewSingleOrder : ContentPage
     {
-        public ViewPaymentsPage()
+        public ViewSingleOrder()
         {
-            CollectionView collectionView = new CollectionView
-            {
-                //ItemsSource = App.DB.GetPaymentsAsync()
-            };
             Content = new StackLayout
             {
                 Children = {
-                    collectionView
+                    new Label { Text = "Welcome to Xamarin.Forms!" }
                 }
             };
         }

@@ -19,10 +19,5 @@ namespace SoftwareEngineeringFinalProject.Models
         public string Description { get; set; }
         public string ImagePath { get; set; }
         public double costPerArrangement { get; set; }
-
-        public double GetPrice()
-        {
-            return 0.0;
-        }
     }
 }

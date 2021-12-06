@@ -2,12 +2,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 using SoftwareEngineeringFinalProject.Models;
+using System;
+using System.Collections;
 
 namespace SoftwareEngineeringFinalProject.Data
 {
     public class Database
     {
-        readonly SQLiteAsyncConnection database;
+        private readonly SQLiteAsyncConnection database;
 
         public Database(string dbPath)
         {
@@ -53,7 +55,62 @@ namespace SoftwareEngineeringFinalProject.Data
 
         }
 
-        /* ** ** ** ** Admin ** ** ** **  */
+        public Task<Order> GetOrderAsync(int orderID)
+        {
+            return database.Table<Order>().Where(i => i.OrderID == orderID).FirstOrDefaultAsync();
+        }
+
+        public async Task<List<FlowerArrangement>> GetOrderArrangementsAsync(int orderID)
+        {
+            List<OrderItem> orderItems = await database.Table<OrderItem>().Where(i => i.OrderID == orderID).ToListAsync();
+            List<FlowerArrangement> flowerArrangements = new List<FlowerArrangement>();
+            foreach (OrderItem item in orderItems)
+            {
+                FlowerArrangement flowerArrangement = await GetFlowerArrangementAsync(item.FlowerArrangementID);
+                flowerArrangements.Add(flowerArrangement);
+            }
+            return flowerArrangements;
+        }
+
+        public Task<int> SaveCartAsync(Cart cart)
+        {
+            return database.InsertAsync(cart);
+        }
+
+        public Task<int> DeleteCartItemAsync(CartItem cartItem)
+        {
+            return database.DeleteAsync(cartItem);
+        }
+
+        public Task<CartItem> GetCartItemAsync(int cartItemID)
+        {
+            return database.Table<CartItem>()
+                           .Where(i => i.CartItemID == cartItemID)
+                           .FirstOrDefaultAsync();
+        }
+
+        public Task<List<CartItem>> GetCartItemsAsync(int cartID)
+        {
+            return database.Table<CartItem>().Where(i => i.CartID == cartID).ToListAsync();
+        }
+
+        public async Task<List<FlowerArrangement>> GetCartArrangementsAsync(int cartID)
+        {
+            List<CartItem> cartItems = await database.Table<CartItem>().Where(i => i.CartID == cartID).ToListAsync();
+            List<FlowerArrangement> flowerArrangements = new List<FlowerArrangement>();
+            foreach (CartItem cartItem in cartItems)
+            {
+                FlowerArrangement flowerArrangement = await GetFlowerArrangementAsync(cartItem.FlowerArrangementID);
+                flowerArrangements.Add(flowerArrangement);
+            }
+            return flowerArrangements;
+        }
+
+        public Task<List<CartQueryResult>> GetCartArrangementsAsync2(int cartID)
+        {
+            return database.QueryAsync<CartQueryResult>($"SELECT c.CartItemID, c.FlowerArrangementID, f.FlowerArrangementName, f.IsOccasion, f.FlowerID, f.costPerArrangement FROM FlowerArrangement f INNER JOIN CartItem c ON f.FlowerArrangementID = c.FlowerArrangementID WHERE c.CartID = {cartID}");
+        }
+
         public Task<int> SaveAdminAsyn(Admin admin)
         {
             if (admin.AdminID != 0)
@@ -100,6 +157,28 @@ namespace SoftwareEngineeringFinalProject.Data
         public Task<User> GetUserFnameLnameAsync(string fname, string lname)
         {
             return database.Table<User>().Where(i => i.FirstName == fname && i.LastName == lname).FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveOrderAsync(Order order)
+        {
+            return database.InsertAsync(order);
+        }
+
+        public Task<List<Order>> GetOrdersAsync()
+        {
+            return database.Table<Order>().ToListAsync();
+        }
+
+        public Task<int> SaveOrderItemAsync(OrderItem orderItem)
+        {
+            if (orderItem.OrderItemID != 0)
+            {
+                return database.UpdateAsync(orderItem);
+            }
+            else
+            {
+                return database.InsertAsync(orderItem);
+            }
         }
 
         public Task<int> SaveUserAsync(User user)
@@ -249,6 +328,38 @@ namespace SoftwareEngineeringFinalProject.Data
         public Task<int> DeleteFlowerAsync(Flower flower)
         {
             return database.DeleteAsync(flower);
+        }
+
+        public Task<List<FlowerArrangement>> GetFlowerArrangementsAsync()
+        {
+            return database.Table<FlowerArrangement>().ToListAsync();
+        }
+
+        public Task<FlowerArrangement> GetFlowerArrangementAsync(int id)
+        {
+            // Get a specific note.
+            return database.Table<FlowerArrangement>()
+                            .Where(i => i.FlowerArrangementID == id)
+                            .FirstOrDefaultAsync();
+        }
+
+        public Task<List<FlowerArrangement>> GetFlowerArrangementsByCategory(int flowerID)
+        {
+            return database.Table<FlowerArrangement>().Where(i => i.FlowerID == flowerID).ToListAsync();
+        }
+
+        public Task<int> SaveFlowerArrangementAsync(FlowerArrangement flowerArrangement)
+        {
+            if (flowerArrangement.FlowerArrangementID != 0)
+            {
+                // Update an existing note.
+                return database.UpdateAsync(flowerArrangement);
+            }
+            else
+            {
+                // Save a new note.
+                return database.InsertAsync(flowerArrangement);
+            }
         }
 
         //* ** ** ** ** CART ITEM ** ** ** *** ** *//

@@ -31,14 +31,7 @@ namespace SoftwareEngineeringFinalProject
             {
                Title = "Flower Options"
             });
-            this.Children.Add(new ContentPage
-            {
-                Title = "Orders",
-                Content = new Label
-                {
-                    Text = "Order page will go here"
-                }
-            });
+            this.Children.Add(new ViewOrdersPage());
         }
     }
 }

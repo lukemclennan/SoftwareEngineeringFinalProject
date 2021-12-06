@@ -35,7 +35,10 @@ namespace SoftwareEngineeringFinalProject
                 Title = "About"
             });
 
+            Title = Children[TabIndex].Title;
+
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
         }
+
     }
 }

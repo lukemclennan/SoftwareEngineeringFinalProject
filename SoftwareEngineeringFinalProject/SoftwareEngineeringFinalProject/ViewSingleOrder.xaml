@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SoftwareEngineeringFinalProject.ViewSingleOrder">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#7EA172">
+            <Label x:Name="LabelCartID" FontSize="Large"/>
+            <Label x:Name="LabelCustomer" FontSize="Large"/>
+            <CollectionView x:Name="collectionView"
+                            SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <!-- Define the appearance of each item in the list -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding FlowerArrangementName, StringFormat='Arrangement: {0}'}" 
+                                   FontSize="Large"
+                                   TextColor="#502419" />
+                            <Label Text="{Binding Category, StringFormat='Category: {0}'}"
+                                   FontSize="Medium" 
+                                   TextColor="#502419" />
+                            <Label Text="{Binding costPerArrangement, StringFormat='Price: ${0:F2}'}"
+                                   FontSize="Medium" 
+                                   TextColor="#502419" />
+                            <Line HeightRequest="5"
+                              WidthRequest="420"
+                              BackgroundColor="#C7CB85"
+                              HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -3,6 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SoftwareEngineeringFinalProject.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#7EA172" />
+            </Style>
+            <Style TargetType="TabbedPage">
+                <Setter Property="UnselectedTabColor" Value="#7EA172" />
+                <Setter Property="SelectedTabColor" Value="#7EA172" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

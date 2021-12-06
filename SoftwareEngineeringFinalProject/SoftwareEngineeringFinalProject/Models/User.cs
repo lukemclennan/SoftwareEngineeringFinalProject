@@ -13,16 +13,16 @@ namespace SoftwareEngineeringFinalProject.Models
         public string UserPassword { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int CartID { get; set; } 
+        public int CartID { get; set; }
 
-        public void UpdatePassword(string password)
-        {
-
-        }
-
-        public void Checkout()
-        {
-
+        public async void CreateCart() {
+            Cart cart = new Cart();
+            int x = await App.DB.SaveCartAsync(cart);
+            //await DisplayAlert("Cart created", "CartID = " + cart.CartID, "OK");
+            CartID = cart.CartID;
+            Console.WriteLine("Return value of SaveCartAsycnc: " + x);
+            Console.WriteLine("CartID.cartID = " + cart.CartID);
+            Console.WriteLine("CartID = " + CartID);
         }
     }
 }
