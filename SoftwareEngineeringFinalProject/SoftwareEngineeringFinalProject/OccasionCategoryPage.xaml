@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SoftwareEngineeringFinalProject.OccasionCategoryPage">
+    <StackLayout BackgroundColor="#fefefe" >
+                <CollectionView x:Name="collectionViews"
+                        Margin="20"
+                        SelectionMode="Single"
+                        
+                                >
+                        
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="10" />
+
+            </CollectionView.ItemsLayout>
+            <!-- Define the appearance of each item in the list -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Image
+                            WidthRequest="200"
+                            HeightRequest="200"
+                            Source="{Binding ImagePath}"
+                            />
+                        <Label Text="{Binding OccasionName}"
+                               FontSize="Large"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                         />
+                        <Label Text="{Binding CostPerOccasion, StringFormat='Price: ${0}'}"
+                               HorizontalTextAlignment="Center"
+                               />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>
