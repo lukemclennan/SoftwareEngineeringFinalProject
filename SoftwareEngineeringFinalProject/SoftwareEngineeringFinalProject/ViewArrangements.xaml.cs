@@ -12,8 +12,8 @@ namespace SoftwareEngineeringFinalProject
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewArrangements : ContentPage
     {
-        public int flowerCategory;
-        public ViewArrangements(int flowerCat = -1)
+        public string flowerCategory;
+        public ViewArrangements(string flowerCat)
         {
             flowerCategory = flowerCat;
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace SoftwareEngineeringFinalProject
         {
             base.OnAppearing();
 
-            if (flowerCategory < 0)
+            if (flowerCategory == null)
             {
                 collectionView.ItemsSource = await App.DB.GetFlowerArrangementsAsync();
             }

@@ -26,6 +26,10 @@ namespace SoftwareEngineeringFinalProject
             {
                 Title = "Occasions"
             });
+            this.Children.Add(new CartPage
+            {
+                Title = "Cart"
+            });
             this.Children.Add(new AdminLoginPage
             {
                 Title = "Admin Mode"

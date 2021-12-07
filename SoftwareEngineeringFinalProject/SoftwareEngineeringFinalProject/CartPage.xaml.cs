@@ -21,20 +21,32 @@ namespace SoftwareEngineeringFinalProject
         {
             base.OnAppearing();
 
+            //get cart items in the CollectionView
             collectionView.ItemsSource = await App.DB.GetCartArrangementsAsync2(App.User.CartID);
+
+            //get total cost of cart
+            Cart cart = await App.DB.GetCartAsync(App.User.CartID);
+            double cost = await cart.GetTotalCost();
+            priceLabel.Text = "Total Cost: $" + cost.ToString("N2");
         }
 
         private async void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //delete item
             int cartItemID = ((CartQueryResult)e.CurrentSelection.FirstOrDefault()).CartItemID;
             CartItem cartItem = await App.DB.GetCartItemAsync(cartItemID);
             await App.DB.DeleteCartItemAsync(cartItem);
             OnAppearing();
             await DisplayAlert("Deleted", "Item successfully deleted", "OK");
+            //update cost
+            Cart cart = await App.DB.GetCartAsync(App.User.CartID);
+            double cost = await cart.GetTotalCost();
+            priceLabel.Text = "Total Cost: $" + cost.ToString("N2");
         }
 
         private async void CheckoutButtonClicked(object sender, EventArgs e)
         {
+            //go to payment
             await Navigation.PushAsync(new PaymentPage());
         }
     }

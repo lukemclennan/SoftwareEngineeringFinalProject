@@ -26,6 +26,14 @@ namespace SoftwareEngineeringFinalProject.Data
             database.CreateTableAsync<CartItem>().Wait();
 
 
+
+            AddData();
+            
+
+        }
+
+
+        private async void AddData() {
             //occasions data
             Occasions birthdayCelebration = new Occasions
             {
@@ -46,13 +54,12 @@ namespace SoftwareEngineeringFinalProject.Data
                 ImagePath = "https://www.scottsflowers.com/images/flowerclique/FCRV-13lg.jpg"
             };
 
-            if (GetOccasionAsync(birthdayCelebration.OccasionName) == null)
-                SaveOccasionAsync(birthdayCelebration);
-            if (GetOccasionAsync(christmasWishesCenterpiece.OccasionName) == null)
-                SaveOccasionAsync(birthdayCelebration);
-            if (GetOccasionAsync(newYearsRadianRouge.OccasionName) == null)
-                SaveOccasionAsync(birthdayCelebration);
-
+            if (await GetOccasionAsync(birthdayCelebration.OccasionName) == null)
+                await SaveOccasionAsync(birthdayCelebration);
+            if (await GetOccasionAsync(christmasWishesCenterpiece.OccasionName) == null)
+                await SaveOccasionAsync (christmasWishesCenterpiece);
+            if (await GetOccasionAsync(newYearsRadianRouge.OccasionName) == null)
+                await SaveOccasionAsync (newYearsRadianRouge);
         }
 
         public Task<Order> GetOrderAsync(int orderID)
@@ -71,7 +78,10 @@ namespace SoftwareEngineeringFinalProject.Data
             }
             return flowerArrangements;
         }
-
+        public Task<Cart> GetCartAsync(int cartID)
+        {
+            return database.Table<Cart>().Where(i => i.CartID == cartID).FirstOrDefaultAsync();
+        }
         public Task<int> SaveCartAsync(Cart cart)
         {
             return database.InsertAsync(cart);
@@ -195,7 +205,6 @@ namespace SoftwareEngineeringFinalProject.Data
 
         public Task<int> DeleteUserAsync(User user)
         {
-            // Delete a note.
             return database.DeleteAsync(user);
         }
 
@@ -330,37 +339,36 @@ namespace SoftwareEngineeringFinalProject.Data
             return database.DeleteAsync(flower);
         }
 
-        public Task<List<FlowerArrangement>> GetFlowerArrangementsAsync()
-        {
-            return database.Table<FlowerArrangement>().ToListAsync();
-        }
+        //public Task<List<FlowerArrangement>> GetFlowerArrangementsAsync()
+        //{
+        //    return database.Table<FlowerArrangement>().ToListAsync();
+        //}
 
         public Task<FlowerArrangement> GetFlowerArrangementAsync(int id)
         {
-            // Get a specific note.
             return database.Table<FlowerArrangement>()
                             .Where(i => i.FlowerArrangementID == id)
                             .FirstOrDefaultAsync();
         }
 
-        public Task<List<FlowerArrangement>> GetFlowerArrangementsByCategory(int flowerID)
-        {
-            return database.Table<FlowerArrangement>().Where(i => i.FlowerID == flowerID).ToListAsync();
-        }
+        //public Task<List<FlowerArrangement>> GetFlowerArrangementsByCategory(int flowerID)
+        //{
+        //    return database.Table<FlowerArrangement>().Where(i => i.FlowerID == flowerID).ToListAsync();
+        //}
 
-        public Task<int> SaveFlowerArrangementAsync(FlowerArrangement flowerArrangement)
-        {
-            if (flowerArrangement.FlowerArrangementID != 0)
-            {
-                // Update an existing note.
-                return database.UpdateAsync(flowerArrangement);
-            }
-            else
-            {
-                // Save a new note.
-                return database.InsertAsync(flowerArrangement);
-            }
-        }
+        //public Task<int> SaveFlowerArrangementAsync(FlowerArrangement flowerArrangement)
+        //{
+        //    if (flowerArrangement.FlowerArrangementID != 0)
+        //    {
+        //        // Update an existing note.
+        //        return database.UpdateAsync(flowerArrangement);
+        //    }
+        //    else
+        //    {
+        //        // Save a new note.
+        //        return database.InsertAsync(flowerArrangement);
+        //    }
+        //}
 
         //* ** ** ** ** CART ITEM ** ** ** *** ** *//
         public Task<int> SaveCartItemAsync(CartItem cartItem)
