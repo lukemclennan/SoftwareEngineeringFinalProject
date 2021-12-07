@@ -337,11 +337,6 @@ namespace SoftwareEngineeringFinalProject.Data
             return database.DeleteAsync(flower);
         }
 
-        public Task<List<FlowerArrangement>> GetFlowerArrangementsAsync()
-        {
-            return database.Table<FlowerArrangement>().ToListAsync();
-        }
-
         public Task<FlowerArrangement> GetFlowerArrangementAsync(int id)
         {
             // Get a specific note.
