@@ -199,7 +199,7 @@ namespace SoftwareEngineeringFinalProject
             cost = Entry_cost3.Text;
             url = Entry_URL2.Text;
    
-            if (fname == null || cost == null || url == null || Entry_OccCategory.Text == null)
+            if (fname == null ||  url == null || Entry_OccCategory.Text == null)
             {
                 await DisplayAlert("Error", "One or Multiple Entry Fields are empty", "Ok");
             }
