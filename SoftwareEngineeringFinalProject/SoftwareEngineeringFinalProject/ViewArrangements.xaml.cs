@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +12,8 @@ namespace SoftwareEngineeringFinalProject
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewArrangements : ContentPage
     {
-        public int flowerCategory;
-        public ViewArrangements(int flowerCat = -1)
+        public string flowerCategory;
+        public ViewArrangements(string flowerCat = null)
         {
             flowerCategory = flowerCat;
             InitializeComponent();
@@ -24,7 +24,11 @@ namespace SoftwareEngineeringFinalProject
         {
             base.OnAppearing();
 
-            if (flowerCategory < 0)
+
+            List<FlowerArrangement> flowerArrangements = await App.DB.GetFlowerArrangementsByCategory(flowerCategory);
+
+
+            if (flowerArrangements.Count == 0)
             {
                 collectionView.ItemsSource = await App.DB.GetFlowerArrangementsAsync();
             }
@@ -32,7 +36,6 @@ namespace SoftwareEngineeringFinalProject
             {
                 collectionView.ItemsSource = await App.DB.GetFlowerArrangementsByCategory(flowerCategory);
             }
-           
         }
 
         async void collectionView_SelectionChanged(Object sender, SelectionChangedEventArgs e)
