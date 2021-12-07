@@ -25,12 +25,13 @@ namespace SoftwareEngineeringFinalProject
 
             foreach(var curOccasion in listOfOccasions)
             {
-                if (curOccasion.OccasionCategory != null || categories.Contains(curOccasion.OccasionCategory) == false)
+                if (curOccasion.OccasionCategory != null && categories.Contains(curOccasion.OccasionCategory) == false)
                 {
                     categories.Add(curOccasion.OccasionCategory);
                 }
             }
-            
+            Console.WriteLine("Number of categories of occasions is " + categories.Count + " or " + listOfOccasions.Count + "\n");
+            Console.WriteLine("The first occasion is " + categories[0] + ".\n");
             if(categories.Count != 0)
                 collectionView.ItemsSource = categories;
             else

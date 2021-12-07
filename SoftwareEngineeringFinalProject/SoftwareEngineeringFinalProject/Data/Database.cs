@@ -26,33 +26,43 @@ namespace SoftwareEngineeringFinalProject.Data
             database.CreateTableAsync<CartItem>().Wait();
 
 
+
+            AddData();
+            
+
+        }
+
+
+        private async void AddData() {
             //occasions data
             Occasions birthdayCelebration = new Occasions
             {
                 OccasionName = "Birthday Celebration",
+                OccasionCategory = "Personal",
                 CostPerOccasion = 54.95,
                 ImagePath = "https://www.scottsflowers.com/images/telsg10/T28-1^1xg.jpg"
             };
             Occasions christmasWishesCenterpiece = new Occasions
             {
                 OccasionName = "Christmas Wishes Centerpiece",
+                OccasionCategory = "Holidays", 
                 CostPerOccasion = 69.95,
                 ImagePath = "https://www.scottsflowers.com/images/T127-1xg.jpg"
             };
             Occasions newYearsRadianRouge = new Occasions
             {
                 OccasionName = "New Year's Radiant Rouge",
+                OccasionCategory = "Holidays",
                 CostPerOccasion = 99.95,
                 ImagePath = "https://www.scottsflowers.com/images/flowerclique/FCRV-13lg.jpg"
             };
 
-            if (GetOccasionAsync(birthdayCelebration.OccasionName) == null)
-                SaveOccasionAsync(birthdayCelebration);
-            if (GetOccasionAsync(christmasWishesCenterpiece.OccasionName) == null)
-                SaveOccasionAsync(birthdayCelebration);
-            if (GetOccasionAsync(newYearsRadianRouge.OccasionName) == null)
-                SaveOccasionAsync(birthdayCelebration);
-
+            if ((await GetOccasionAsync(birthdayCelebration.OccasionName)) == null)
+                await SaveOccasionAsync(birthdayCelebration);
+            if ((await GetOccasionAsync(christmasWishesCenterpiece.OccasionName)) == null)
+                await SaveOccasionAsync (christmasWishesCenterpiece);
+            if ((await GetOccasionAsync(newYearsRadianRouge.OccasionName)) == null)
+                await SaveOccasionAsync (newYearsRadianRouge);
         }
 
         public Task<Order> GetOrderAsync(int orderID)
@@ -71,7 +81,10 @@ namespace SoftwareEngineeringFinalProject.Data
             }
             return flowerArrangements;
         }
-
+        public Task<Cart> GetCartAsync(int cartID)
+        {
+            return database.Table<Cart>().Where(i => i.CartID == cartID).FirstOrDefaultAsync();
+        }
         public Task<int> SaveCartAsync(Cart cart)
         {
             return database.InsertAsync(cart);
@@ -109,6 +122,12 @@ namespace SoftwareEngineeringFinalProject.Data
         public Task<List<CartQueryResult>> GetCartArrangementsAsync2(int cartID)
         {
             return database.QueryAsync<CartQueryResult>($"SELECT c.CartItemID, c.FlowerArrangementID, f.FlowerArrangementName, f.IsOccasion, f.FlowerID, f.costPerArrangement FROM FlowerArrangement f INNER JOIN CartItem c ON f.FlowerArrangementID = c.FlowerArrangementID WHERE c.CartID = {cartID}");
+        }
+
+        public Task<List<CartQueryResult2>> GetCartOccasionsAsync(int cartID)
+        {
+            return database.QueryAsync<CartQueryResult2>($"SELECT c.CartItemID, c.OccasionID, f.OccasionName, f.CostPerOccasion FROM Occasions f INNER JOIN CartItem c ON f.OccasionID = c.OccasionID WHERE c.CartID = {cartID}");
+
         }
 
         public Task<int> SaveAdminAsyn(Admin admin)
@@ -195,7 +214,6 @@ namespace SoftwareEngineeringFinalProject.Data
 
         public Task<int> DeleteUserAsync(User user)
         {
-            // Delete a note.
             return database.DeleteAsync(user);
         }
 
@@ -346,30 +364,29 @@ namespace SoftwareEngineeringFinalProject.Data
 
         public Task<FlowerArrangement> GetFlowerArrangementAsync(int id)
         {
-            // Get a specific note.
             return database.Table<FlowerArrangement>()
                             .Where(i => i.FlowerArrangementID == id)
                             .FirstOrDefaultAsync();
         }
 
-        public Task<List<FlowerArrangement>> GetFlowerArrangementsByCategory(int flowerID)
-        {
-            return database.Table<FlowerArrangement>().Where(i => i.FlowerID == flowerID).ToListAsync();
-        }
+        //public Task<List<FlowerArrangement>> GetFlowerArrangementsByCategory(int flowerID)
+        //{
+        //    return database.Table<FlowerArrangement>().Where(i => i.FlowerID == flowerID).ToListAsync();
+        //}
 
-        public Task<int> SaveFlowerArrangementAsync(FlowerArrangement flowerArrangement)
-        {
-            if (flowerArrangement.FlowerArrangementID != 0)
-            {
-                // Update an existing note.
-                return database.UpdateAsync(flowerArrangement);
-            }
-            else
-            {
-                // Save a new note.
-                return database.InsertAsync(flowerArrangement);
-            }
-        }
+        //public Task<int> SaveFlowerArrangementAsync(FlowerArrangement flowerArrangement)
+        //{
+        //    if (flowerArrangement.FlowerArrangementID != 0)
+        //    {
+        //        // Update an existing note.
+        //        return database.UpdateAsync(flowerArrangement);
+        //    }
+        //    else
+        //    {
+        //        // Save a new note.
+        //        return database.InsertAsync(flowerArrangement);
+        //    }
+        //}
 
         //* ** ** ** ** CART ITEM ** ** ** *** ** *//
         public Task<int> SaveCartItemAsync(CartItem cartItem)

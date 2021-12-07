@@ -13,6 +13,7 @@ namespace SoftwareEngineeringFinalProject
         private string description;
         private string cost;
         private string url;
+        private string occasionCategory;
 
         public AdminDeleteFlower()
         {
@@ -132,12 +133,12 @@ namespace SoftwareEngineeringFinalProject
                     Category = category,
                     Description = description,
                     costPerArrangement = ConvertToDouble(cost),
-                    ImagePath = url
+                    ImagePath = url,
+                    IsVase = CheckBoxVase.IsChecked
                 };
                 await App.DB.SaveFlowerArrangement(flowerArr);
                 await DisplayAlert("Success", "New flower added", "Ok");
             }
-
         }
 
         async void updateArrangementPrice(Object sender, EventArgs e)

@@ -43,7 +43,8 @@
                       Margin="0,30,0,0"/>
                 <Entry Placeholder="Enter the Name of the Category" PlaceholderColor="#502419" x:Name="Entry_fname3" BackgroundColor="#C7CB85"/>
                 <Button TextColor = "#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="findAndDeleteFlower" Text="Find and Remove"/>
-                <!--ADD Arrangement-->
+                
+               <!--ADD Arrangement-->
                 <Label Text="Add Flower Arrangement"
                        FontAttributes="Bold"
                        FontSize="Title"
@@ -55,8 +56,11 @@
                 <Entry Placeholder="Enter the Category of the Flower Arrangement" PlaceholderColor="#502419" x:Name="Entry_cat1" BackgroundColor="#C7CB85" />
                 <Entry Placeholder="Enter the Description of the Flower Arrangement" PlaceholderColor="#502419" x:Name="Entry_desc" BackgroundColor="#C7CB85" />
                 <Entry Placeholder="Image URL: https://www.domain.com/image.jpg" PlaceholderColor="#502419" x:Name="Entry_URL3" BackgroundColor="#C7CB85" />
+                <Label Text=" In a vase?" TextColor="#502419" BackgroundColor="#C7CB85" FontSize="Medium"/>
+                <CheckBox x:Name="CheckBoxVase" Color="#502419"  />
                 <Button Text="Add Flower" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" CornerRadius="45" HorizontalOptions="Center" Clicked="addFlowerArrangement"/>
-                <!--Update ARRANGMENT PRICE--> 
+                
+               <!--Update ARRANGMENT PRICE--> 
                 <Label Text="Edit Arrangement Price"
                       FontAttributes="Bold"
                       FontSize="Title"
@@ -67,6 +71,7 @@
                <Entry Placeholder="Enter The New Price of the Flower Arrangement" BackgroundColor="#C7CB85" x:Name="Entry_cost6" PlaceholderColor="#502419" />
                <Entry Placeholder="Enter the New Description of the Flower Arrangement" PlaceholderColor="#502419" x:Name="Entry_desc2" BackgroundColor="#C7CB85" />
                <Button Text="Update Price" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="updateArrangementPrice"/>
+               
                <!--DELETE ARRANGEMENT-->
                <Label Text="Delete Arrangement"
                       FontAttributes="Bold"
@@ -100,6 +105,7 @@
                <Entry Placeholder="Enter the Name of the Occasion" PlaceholderColor="#502419" x:Name="Entry_fname4" BackgroundColor="#C7CB85"/>
                <Entry Placeholder="Enter The New Price of the Occasion" BackgroundColor="#C7CB85" x:Name="Entry_cost4" PlaceholderColor="#502419" />
                <Button Text="Update Occasion Price" TextColor="#502419" BackgroundColor="#C7CB85" WidthRequest="350" HorizontalOptions="Center" CornerRadius="45" Clicked="updateOccaionPrice"/>
+               
                <!--DELETE OCCASION-->
                <Label Text="Delete Occasion"
                       FontAttributes="Bold"
