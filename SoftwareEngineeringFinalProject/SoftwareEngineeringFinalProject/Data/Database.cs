@@ -200,7 +200,7 @@ namespace SoftwareEngineeringFinalProject.Data
         }
 
 
-        /* ** ** ** ** Occasions Arrangment ** ** ** **  */
+       /* ** ** ** ** Occasions Arrangment ** ** ** **  */
         public Task<List<Occasions>> GetOccasionsAsync()
         {
             return database.Table<Occasions>().ToListAsync();
@@ -210,6 +210,13 @@ namespace SoftwareEngineeringFinalProject.Data
             return database.Table<Occasions>()
                            .Where(i => i.OccasionName == OccName)
                            .FirstOrDefaultAsync();
+        }
+
+        public Task<List<Occasions>> GetOccasionByCategory(string category)
+        {
+            return database.Table<Occasions>()
+                           .Where(i => i.OccasionCategory == category)
+                           .ToListAsync();
         }
         public Task<int> SaveOccasionAsync(Occasions o)
         {
