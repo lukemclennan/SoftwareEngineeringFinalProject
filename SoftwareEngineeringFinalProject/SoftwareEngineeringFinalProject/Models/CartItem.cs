@@ -11,6 +11,7 @@ namespace SoftwareEngineeringFinalProject.Models
         public int CartItemID { get; set; }
         public int CartID { get; set; }
         public int FlowerArrangementID { get; set; }
+        public int OccasionID { get; set; }
 
     }
 }
