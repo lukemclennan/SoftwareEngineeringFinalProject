@@ -30,7 +30,7 @@ namespace SoftwareEngineeringFinalProject
         private async void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Flower flowerID = ((Flower)e.CurrentSelection.FirstOrDefault());
-            await Navigation.PushAsync(new ViewArrangements(flowerID.FlowerName));
+            await Navigation.PushAsync(new ViewArrangements(flowerID.FlowerID));
             //bool addToCart = await DisplayAlert("Add to Cart?", "Would you like to add " + flower.FlowerName + " to your cart?", "Yes", "No");
             //if (addToCart)
             //{
