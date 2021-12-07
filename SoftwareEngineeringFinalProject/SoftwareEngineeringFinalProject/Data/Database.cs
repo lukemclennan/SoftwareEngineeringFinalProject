@@ -211,6 +211,13 @@ namespace SoftwareEngineeringFinalProject.Data
                            .Where(i => i.OccasionName == OccName)
                            .FirstOrDefaultAsync();
         }
+        
+        public Task<Occasions> GetOccasionAsync(int OccId)
+        {
+            return database.Table<Occasions>()
+                           .Where(i => i.OccasionID == OccId)
+                           .FirstOrDefaultAsync();
+        }
 
         public Task<List<Occasions>> GetOccasionByCategory(string category)
         {
