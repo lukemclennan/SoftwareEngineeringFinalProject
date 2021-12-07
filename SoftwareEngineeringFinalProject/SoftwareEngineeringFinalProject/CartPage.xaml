@@ -5,7 +5,7 @@
              Title="Cart">
     <StackLayout>
         <Label Text="Click to remove from cart" />
-        <!-- Display cart items in a list -->
+        <!-- Display cart items (arrangements) in a list -->
         <CollectionView x:Name="collectionView"
                         Margin="20"
                         SelectionMode="Single"
@@ -20,7 +20,30 @@
                     <StackLayout>
                         <Label Text="{Binding FlowerArrangementName}"
                                FontSize="Large" />
-                        <Label Text="{Binding costPerArrangement,StringFormat='Cost: ${F0:2}'}" 
+                        <Label Text="{Binding costPerArrangement,StringFormat='Cost: ${0:F2}'}" 
+                               FontSize="Medium" />
+                        <!--<Label Text="{Binding FlowerID}" 
+                               FontSize="Medium" />-->
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!-- Display cart items (occasions) in a list -->
+        <CollectionView x:Name="collectionViewOccasions"
+                        Margin="20"
+                        SelectionMode="Single"
+                        SelectionChanged="SelectionChanged">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <!-- Define the appearance of each item in the list -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding OccasionName}"
+                               FontSize="Large" />
+                        <Label Text="{Binding CostPerOccasion,StringFormat='Cost: ${0:F2}'}" 
                                FontSize="Medium" />
                         <!--<Label Text="{Binding FlowerID}" 
                                FontSize="Medium" />-->

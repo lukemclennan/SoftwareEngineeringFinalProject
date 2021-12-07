@@ -38,27 +38,30 @@ namespace SoftwareEngineeringFinalProject.Data
             Occasions birthdayCelebration = new Occasions
             {
                 OccasionName = "Birthday Celebration",
+                OccasionCategory = "Personal",
                 CostPerOccasion = 54.95,
                 ImagePath = "https://www.scottsflowers.com/images/telsg10/T28-1^1xg.jpg"
             };
             Occasions christmasWishesCenterpiece = new Occasions
             {
                 OccasionName = "Christmas Wishes Centerpiece",
+                OccasionCategory = "Holidays", 
                 CostPerOccasion = 69.95,
                 ImagePath = "https://www.scottsflowers.com/images/T127-1xg.jpg"
             };
             Occasions newYearsRadianRouge = new Occasions
             {
                 OccasionName = "New Year's Radiant Rouge",
+                OccasionCategory = "Holidays",
                 CostPerOccasion = 99.95,
                 ImagePath = "https://www.scottsflowers.com/images/flowerclique/FCRV-13lg.jpg"
             };
 
-            if (await GetOccasionAsync(birthdayCelebration.OccasionName) == null)
+            if ((await GetOccasionAsync(birthdayCelebration.OccasionName)) == null)
                 await SaveOccasionAsync(birthdayCelebration);
-            if (await GetOccasionAsync(christmasWishesCenterpiece.OccasionName) == null)
+            if ((await GetOccasionAsync(christmasWishesCenterpiece.OccasionName)) == null)
                 await SaveOccasionAsync (christmasWishesCenterpiece);
-            if (await GetOccasionAsync(newYearsRadianRouge.OccasionName) == null)
+            if ((await GetOccasionAsync(newYearsRadianRouge.OccasionName)) == null)
                 await SaveOccasionAsync (newYearsRadianRouge);
         }
 
@@ -119,6 +122,12 @@ namespace SoftwareEngineeringFinalProject.Data
         public Task<List<CartQueryResult>> GetCartArrangementsAsync2(int cartID)
         {
             return database.QueryAsync<CartQueryResult>($"SELECT c.CartItemID, c.FlowerArrangementID, f.FlowerArrangementName, f.IsOccasion, f.FlowerID, f.costPerArrangement FROM FlowerArrangement f INNER JOIN CartItem c ON f.FlowerArrangementID = c.FlowerArrangementID WHERE c.CartID = {cartID}");
+        }
+
+        public Task<List<CartQueryResult2>> GetCartOccasionsAsync(int cartID)
+        {
+            return database.QueryAsync<CartQueryResult2>($"SELECT c.CartItemID, c.OccasionID, f.OccasionName, f.CostPerOccasion FROM Occasions f INNER JOIN CartItem c ON f.OccasionID = c.OccasionID WHERE c.CartID = {cartID}");
+
         }
 
         public Task<int> SaveAdminAsyn(Admin admin)

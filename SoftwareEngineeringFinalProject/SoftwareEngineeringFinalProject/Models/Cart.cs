@@ -10,7 +10,6 @@ namespace SoftwareEngineeringFinalProject.Models
     {
         [PrimaryKey, AutoIncrement]
         public int CartID { get; set; }
-
         public async Task<double> GetTotalCost() {
             double cost = 0.0;
             //get cart arrangements
@@ -19,6 +18,13 @@ namespace SoftwareEngineeringFinalProject.Models
             foreach (CartQueryResult item in items)
             {
                 cost += item.costPerArrangement;
+            }
+            //get cart occasions
+            List<CartQueryResult2> occasions = await App.DB.GetCartOccasionsAsync(CartID);
+            //sum up prices of each occasion
+            foreach (CartQueryResult2 occasion in occasions)
+            {
+                cost += occasion.CostPerOccasion;
             }
             return cost;
         }

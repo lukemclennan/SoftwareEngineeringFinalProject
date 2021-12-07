@@ -21,8 +21,11 @@ namespace SoftwareEngineeringFinalProject
         {
             base.OnAppearing();
 
-            //get cart items in the CollectionView
+            //get cart items (arrangments) in the CollectionView
             collectionView.ItemsSource = await App.DB.GetCartArrangementsAsync2(App.User.CartID);
+
+            //get cart items (occasions) in the CollectionView
+            collectionViewOccasions.ItemsSource = await App.DB.GetCartOccasionsAsync(App.User.CartID);
 
             //get total cost of cart
             Cart cart = await App.DB.GetCartAsync(App.User.CartID);
