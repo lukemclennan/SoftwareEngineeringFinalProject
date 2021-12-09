@@ -24,13 +24,22 @@ namespace SoftwareEngineeringFinalProject
         {
             base.OnAppearing();
 
-            collectionView.ItemsSource = await App.DB.GetFlowersAsync();
+            List<Flower> list = await App.DB.GetFlowersAsync();
+            list.Add(new Flower
+            {
+                FlowerName = "All",
+                FlowerID = -1
+            });
+            collectionView.ItemsSource = list;
         }
 
         private async void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Flower flowerID = ((Flower)e.CurrentSelection.FirstOrDefault());
-            await Navigation.PushAsync(new ViewArrangements(flowerID.FlowerName));
+            Flower flower = ((Flower)e.CurrentSelection.FirstOrDefault());
+            if (flower.FlowerID == -1)
+                await Navigation.PushAsync(new ViewArrangements());
+            else
+                await Navigation.PushAsync(new ViewArrangements(flower.FlowerName));
             //bool addToCart = await DisplayAlert("Add to Cart?", "Would you like to add " + flower.FlowerName + " to your cart?", "Yes", "No");
             //if (addToCart)
             //{

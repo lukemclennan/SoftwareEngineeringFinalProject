@@ -29,6 +29,9 @@
                         <Label Text="{Binding Description, StringFormat='Description: {0}'}"
                                FontSize="Medium"
                                TextColor="#502419"/>
+                        <Label Text="Image/Description credit: www.scottsflowers.com"
+                               FontSize="Small"
+                               TextColor="#502419"/>                               
                         <Line HeightRequest="5"
                               WidthRequest="420"
                               BackgroundColor="#C7CB85"
