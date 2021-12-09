@@ -37,14 +37,14 @@
                       BackgroundColor="LightGray"
                       HorizontalOptions="Center"/>
 
-                <Label Text="Question: Your Prices seem fair but do you offer any discounts?"
+                <Label Text="Question: Your prices seem fair but do you offer any discounts?"
                        FontAttributes="Bold"
                        FontSize="Medium"
                        HorizontalOptions="StartAndExpand"
                        Margin="10, 10, 0, 0"
                        TextColor="Black"/>
             
-                <Label Text="Answer: Yes! We are proud to offer our sercive members, police officers, and first responders a 15% discount on all items."
+                <Label Text="Answer: Yes! We are proud to offer our service members, police officers, and first responders a 15% discount on all items."
                        FontAttributes="Italic"
                        FontSize="Medium"
                        HorizontalOptions="StartAndExpand"
@@ -58,7 +58,7 @@
                        Margin="10, 10, 0, 0"
                        TextColor="Black"/>
             
-                <Label Text="Answer: Unfortunately, no. In order to keep our prices low we do not offer any delivery service."
+                <Label Text="Answer: Unfortunately, no. In order to keep our prices low, we do not offer any delivery service."
                        FontAttributes="Italic"
                        FontSize="Medium"
                        HorizontalOptions="StartAndExpand"
@@ -72,7 +72,7 @@
                        Margin="10, 10, 0, 0"
                        TextColor="Black"/>
             
-                <Label Text="Answer: Since 1980 when Grandma Becky opened up the flower shop we have source our flower seeds from local famers and gardeners. From there we carfuly plant and nurture each seed in our green house giving it vital nutrients and the perfect weather to prosper."
+                <Label Text="Answer: Since 1980 when Grandma Becky opened up the flower shop we have sourced our flower seeds from local farmers and gardeners. From there we carefully plant and nurture each seed in our green house giving it vital nutrients and the perfect weather to prosper."
                        FontAttributes="Italic"
                        FontSize="Medium"
                        HorizontalOptions="StartAndExpand"
@@ -86,14 +86,14 @@
                        Margin="10, 10, 0, 0"
                        TextColor="Black"/>
             
-                <Label Text="Answer: Yes! Check out our 'occasions' tab in the bottom of the home page. There we offer many different flower arrangments from Thanksgiving to birthdays and anniversersaries."
+                <Label Text="Answer: Yes! Check out our 'occasions' tab in the bottom of the home page. There we offer many different flower arrangments from Thanksgiving to birthdays and anniversaries."
                        FontAttributes="Italic"
                        FontSize="Medium"
                        HorizontalOptions="StartAndExpand"
                        Margin="30, 5, 0, 0"
                        TextColor="Black"/>
 
-                <Label Text="Question: How can I customize my order?"
+                <!--<Label Text="Question: How can I customize my order?"
                        FontAttributes="Bold"
                        FontSize="Medium"
                        HorizontalOptions="StartAndExpand"
@@ -105,7 +105,7 @@
                        FontSize="Medium"
                        HorizontalOptions="StartAndExpand"
                        Margin="30, 5, 0, 0"
-                       TextColor="Black"/>
+                       TextColor="Black"/>-->
 
                 <Label Text="Question: This app is Flippin awsome! Who made it?"
                        FontAttributes="Bold"
@@ -114,7 +114,7 @@
                        Margin="10, 10, 0, 0"
                        TextColor="Black"/>
             
-                <Label Text="Answer: Alot of hard work went into developing this app. It was made by Elijah Proctor, Luke Mclennan, Alexis Rodriguez, and Sammie Powwel."
+                <Label Text="Answer: Alot of hard work went into developing this app. It was made by Elijah Proctor, Luke McLennan, Alexis Rodriguez, and Sammie Powwel."
                        FontAttributes="Italic"
                        FontSize="Medium"
                        HorizontalOptions="StartAndExpand"
@@ -155,13 +155,25 @@
                       BackgroundColor="LightGray"
                       HorizontalOptions="Center"/>
 
-                 <Label Text="To provide consumers with high quality beautiful flowers at an affordable price."
+                <Label Text="To provide consumers with high quality beautiful flowers at an affordable price."
                        HorizontalOptions="StartAndExpand"
                        TextColor="Black"
                        FontAttributes="Italic"
                        FontSize="Medium"
                        Margin="10, 10, 0, 0" />
-                 </StackLayout>
+
+                <Line HeightRequest="5"
+                      WidthRequest="420"
+                      BackgroundColor="LightGray"
+                      HorizontalOptions="Center"/>
+
+                <Label Text="Credit to Scott's House of Flowers (www.scottsflowers.com) for the images and descriptions for the flower arrangements."
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="Black"
+                       FontAttributes="Italic"
+                       FontSize="Medium"
+                       Margin="10, 10, 0, 0" />
+            </StackLayout>
            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

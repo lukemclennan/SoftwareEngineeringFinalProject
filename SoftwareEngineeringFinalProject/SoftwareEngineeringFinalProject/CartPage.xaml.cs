@@ -47,6 +47,20 @@ namespace SoftwareEngineeringFinalProject
             priceLabel.Text = "Total Cost: $" + cost.ToString("N2");
         }
 
+        private async void SelectionChanged2(object sender, SelectionChangedEventArgs e)
+        {
+            //delete item
+            int cartItemID = ((CartQueryResult2)e.CurrentSelection.FirstOrDefault()).CartItemID;
+            CartItem cartItem = await App.DB.GetCartItemAsync(cartItemID);
+            await App.DB.DeleteCartItemAsync(cartItem);
+            OnAppearing();
+            await DisplayAlert("Deleted", "Item successfully deleted", "OK");
+            //update cost
+            Cart cart = await App.DB.GetCartAsync(App.User.CartID);
+            double cost = await cart.GetTotalCost();
+            priceLabel.Text = "Total Cost: $" + cost.ToString("N2");
+        }
+
         private async void CheckoutButtonClicked(object sender, EventArgs e)
         {
             //go to payment

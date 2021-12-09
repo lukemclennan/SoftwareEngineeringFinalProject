@@ -25,7 +25,7 @@ namespace SoftwareEngineeringFinalProject.Data
             database.CreateTableAsync<Cart>().Wait();
             database.CreateTableAsync<CartItem>().Wait();
 
-
+            Console.WriteLine("Database path is:    " + dbPath + "\n");
 
             AddData();
             
