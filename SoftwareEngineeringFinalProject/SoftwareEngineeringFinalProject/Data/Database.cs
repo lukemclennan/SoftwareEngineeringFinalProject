@@ -25,7 +25,7 @@ namespace SoftwareEngineeringFinalProject.Data
             database.CreateTableAsync<Cart>().Wait();
             database.CreateTableAsync<CartItem>().Wait();
 
-            Console.WriteLine("Database path is:    " + dbPath + "\n");
+
 
             AddData();
             
@@ -85,6 +85,13 @@ namespace SoftwareEngineeringFinalProject.Data
                 FlowerName = "Modern",
                 ImagePath = "https://www.scottsflowers.com/gifs/hp-birthday.jpg"
             };
+
+            Models.Flower All = new Models.Flower
+            {
+                FlowerName = "All",
+                ImagePath = "https://www.scottsflowers.com/gifs/hp-luxe.jpg"
+            };
+
             if ((await GetFlowerAsync(Rose.FlowerName)) == null)
                 await SaveFlowerAsync(Rose);
             if ((await GetFlowerAsync(Lavender.FlowerName)) == null)
@@ -93,6 +100,8 @@ namespace SoftwareEngineeringFinalProject.Data
                 await SaveFlowerAsync(BestSeller);
             if ((await GetFlowerAsync(Modern.FlowerName)) == null)
                 await SaveFlowerAsync(Modern);
+            if ((await GetFlowerAsync(All.FlowerName)) == null)
+                await SaveFlowerAsync(All);
 
             //flower arrangement Rose data
             Models.FlowerArrangement LoveStory = new Models.FlowerArrangement
